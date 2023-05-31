@@ -1,5 +1,5 @@
 Trabajo practico Final laboratorio 3
-Proyecto:Videojuego
+Proyecto:Hipodromo Videojuego
 Grupo compuesto por:
 Llull Tomás
 Moreno Juan Cruz
