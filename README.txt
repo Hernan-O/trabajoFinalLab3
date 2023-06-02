@@ -7,3 +7,4 @@ Morgade Felipe
 Navarra Hernán
 
 UML: https://lucid.app/lucidchart/37ab9ac9-c639-4c66-903d-7852c39698e4/edit?invitationId=inv_43e36412-0164-429d-8a94-cbf8afc438eb&page=0_0#
+TRELLO:https://trello.com/invite/trabajofinallaboratorio3/ATTI8889b229730077b780ad470094bf2d26D98A951B
