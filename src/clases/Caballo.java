@@ -4,6 +4,7 @@ public class Caballo {
     private int edad;
     private String nombre;
     private Jockey piloto;
+    private String raza;
 
     public Caballo(int edad,String nombre,Jockey piloto){
         this.edad = edad;
@@ -26,6 +27,14 @@ public class Caballo {
         this.nombre = nombre;
     }
 
+    public String getRaza() {
+        return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+    
     public Jockey getPiloto() {
         return piloto;
     }
