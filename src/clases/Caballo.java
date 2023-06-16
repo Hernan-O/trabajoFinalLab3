@@ -33,9 +33,10 @@ public class Caballo {
     public void setPiloto(Jockey piloto) {
         this.piloto = piloto;
     }
-   /* public void mostrarInformacion(){
-        System.out.println("Nombre del caballo:"+this.getNombre()+"\nEdad caballo"+this.getEdad()+this.piloto.mostrarInformacion());
+   public void mostrarInformacion(){
+        System.out.println("Nombre del caballo:"+this.getNombre()+"\nEdad caballo"+this.getEdad());
+        this.piloto.mostrarInformacion();
     }
-    */
+    
 
 }
