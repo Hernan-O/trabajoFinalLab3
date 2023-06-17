@@ -1,5 +1,6 @@
 package menus;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import carreras.CampoTraviesa;
@@ -13,26 +14,46 @@ public class Jugar {
 	}
 	
 	public void elegirCarrera() {
-		System.out.println("*** CARRERAS ***");
-		System.out.println("-" + new CampoTraviesa().toString());
-		System.out.println("-" + new Obstaculos().toString());
-		System.out.println("-" + new Lisa().toString());
-		
-		int opc = 0;
-		opc = in.nextInt();
-		in.nextLine();
-		
-		switch(opc) {
-		case 1:
-			
-			break;
-			
-		case 2:
-			
-			break;
-		
-		default:
-			break;
-		}
+		int continuar = 0;
+        while (continuar == 0) {
+            try {
+
+                System.out.println("*** CARRERAS ***");
+        		System.out.println("1-" + new CampoTraviesa().toString());
+        		System.out.println("2-" + new Obstaculos().toString());
+        		System.out.println("3-" + new Lisa().toString());
+        		System.out.println("4-Salir " );
+
+                int op = in.nextInt();
+                in.nextLine();
+                
+                switch (op) {
+                    case 1:
+                        new CampoTraviesa("Anashe", "Dificileasymode");
+                        break;
+
+                    case 2:
+                        new Obstaculos(); 
+                        break;
+                    case 3:
+                    	new Lisa();
+                        break;
+                    case 4:
+                        System.out.println("Fin juego");
+                        System.exit(0);
+                        
+                        break;
+
+                    default:
+                        System.out.println("Ingrese una opcion correcta.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                //System.out.println(e.getMessage());
+                //e.printStackTrace();
+                System.out.println("Ingrese una opcion correcta");
+            }
+        }
+       
 	}
 }

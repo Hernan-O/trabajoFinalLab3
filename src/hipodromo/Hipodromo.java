@@ -17,20 +17,19 @@ public class Hipodromo {
     private int lugares;
     private ArrayList<Carrera> carreras = new ArrayList<>();
     private LinkedList<Apuesta> apuestas = new LinkedList<>();
-    
+    private static final Scanner in = new Scanner(System.in);
     
     public void menu() {
         int continuar = 0;
         while (continuar == 0) {
             try {
-                Scanner teclado = new Scanner(System.in);
 
                 System.out.println("Ingrese opcion:");
                 System.out.println("1: JUGAR");
                 System.out.println("2: SALIR");
 
-                int op = teclado.nextInt();
-                teclado.nextLine();
+                int op = in.nextInt();
+                in.nextLine();
                 switch (op) {
                     case 1:
                         new Jugar().elegirCarrera();
