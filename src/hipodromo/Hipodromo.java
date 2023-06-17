@@ -1,24 +1,32 @@
 package hipodromo;
 
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import apuestas.Apuesta;
 import carreras.Carrera;
-import carreras.Obstaculos;
 import entes.Caballo;
 import menus.Jugar;
 
 public class Hipodromo {
-    private String nombre;
-    private Obstaculos tipoPista;
-    private int distancia;
-    private int lugares;
-    private ArrayList<Carrera> carreras = new ArrayList<>();
-    private LinkedList<Apuesta> apuestas = new LinkedList<>();
+   
+    private HashSet<Carrera> carreras;
+    private HashSet<Apuesta> apuestas ;
+    public static  HashSet<Caballo> caballos ;
     private static final Scanner in = new Scanner(System.in);
+    
+    public Hipodromo(HashSet<Caballo> caballosSinSeleccionar)
+    {
+    	 this.carreras = new HashSet<Carrera>();
+    	 this.apuestas = new HashSet<Apuesta>();
+    	 caballos= new HashSet<Caballo>();
+    	 seleccionarCaballos(caballosSinSeleccionar);
+    }
     
     public void menu() {
         int continuar = 0;
@@ -33,6 +41,7 @@ public class Hipodromo {
                 in.nextLine();
                 switch (op) {
                     case 1:
+                    	
                         new Jugar().elegirCarrera();
                         break;
 
@@ -54,4 +63,19 @@ public class Hipodromo {
         }
     }
     
+    public void seleccionarCaballos(HashSet<Caballo> caballosSinSeleccionar)
+    {
+    	List<Caballo> caballosTemp = new ArrayList<>(caballosSinSeleccionar);
+    	 Random random = new Random();
+    	 while (caballos.size() < 8 && !caballosTemp.isEmpty()) {
+    		int index = random.nextInt(caballosTemp.size());
+            Caballo caballoSeleccionado = caballosTemp.get(index);
+            
+            if (!caballos.contains(caballoSeleccionado)) {
+                caballos.add(caballoSeleccionado);
+            }
+            caballosTemp.remove(index);
+    		
+    	}
+    }
 }

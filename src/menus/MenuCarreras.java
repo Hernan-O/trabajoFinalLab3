@@ -3,12 +3,23 @@ package menus;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import entes.Caballo;
+import hipodromo.Hipodromo;
+
 public class MenuCarreras {
-	
 	public MenuCarreras()
 	{
-	
+		
 	}
+	
+	public void listarCaballos()
+	{
+		for(Caballo caballo : Hipodromo.caballos)
+		{
+			System.out.println(caballo.toString());
+		}
+	}
+	
 	public void menuCarrera()
     {
     	int continuar = 0;
@@ -32,6 +43,7 @@ public class MenuCarreras {
 
                     case 2:
                         System.out.println("Opcion 2");
+                        listarCaballos();
                         break;
                        
                     case 3:

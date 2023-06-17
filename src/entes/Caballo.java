@@ -57,5 +57,12 @@ public class Caballo {
         System.out.println("Nombre del caballo:"+this.getNombre()+"\nEdad caballo"+this.getEdad());
         this.piloto.mostrarInformacion();
     }
+	@Override
+	public String toString() {
+		return "Caballo [edad=" + edad + ", nombre=" + nombre + ", piloto=" + piloto + ", raza=" + raza + ", stat="
+				+ stat + "]";
+	}
+    
+    
 
 }
