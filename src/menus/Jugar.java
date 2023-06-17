@@ -9,8 +9,13 @@ import carreras.Obstaculos;
 
 public class Jugar {
 	private static final Scanner in = new Scanner(System.in);
+	private CampoTraviesa campo_traviesa;
+	private Obstaculos obstaculos;
+	private Lisa lisa;
 	public Jugar() {
-
+		this.campo_traviesa = new CampoTraviesa();
+		this.lisa = new Lisa();
+		this.obstaculos = new Obstaculos();
 	}
 	
 	public void elegirCarrera() {
@@ -19,24 +24,25 @@ public class Jugar {
             try {
 
                 System.out.println("*** CARRERAS ***");
-        		System.out.println("1-" + new CampoTraviesa().toString());
-        		System.out.println("2-" + new Obstaculos().toString());
-        		System.out.println("3-" + new Lisa().toString());
+        		System.out.println("1-" + campo_traviesa.toString());
+        		System.out.println("2-" + obstaculos.toString());
+        		System.out.println("3-" + lisa.toString());
         		System.out.println("4-Salir " );
 
-                int op = in.nextInt();
+                int op = 0;
+                op = in.nextInt();
                 in.nextLine();
                 
                 switch (op) {
                     case 1:
-                        new CampoTraviesa("Anashe", "Dificileasymode");
+                        campo_traviesa.menuCarreras();
                         break;
 
                     case 2:
-                        new Obstaculos(); 
+                        obstaculos.menuCarreras();
                         break;
                     case 3:
-                    	new Lisa();
+                    	lisa.menuCarreras();
                         break;
                     case 4:
                         System.out.println("Fin juego");

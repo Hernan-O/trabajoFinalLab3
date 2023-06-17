@@ -8,6 +8,7 @@ import java.util.Scanner;
 import apuestas.Apuesta;
 import carreras.Carrera;
 import carreras.Obstaculos;
+import entes.Caballo;
 import menus.Jugar;
 
 public class Hipodromo {
@@ -52,4 +53,5 @@ public class Hipodromo {
             }
         }
     }
+    
 }

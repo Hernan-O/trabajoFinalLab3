@@ -1,7 +1,13 @@
 package carreras;
 
 public class Obstaculos extends Carrera{
-    private int vallas;
+
+	private int vallas;
+	
+    public Obstaculos() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     
     
     public String toString() {

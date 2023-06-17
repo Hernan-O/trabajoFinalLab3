@@ -11,40 +11,24 @@ import menus.MenuCarreras;
 public abstract class Carrera {
     private String nombreCarrera;
     private ArrayList<Caballo> listaCaballos;
-    private String dificultad;
+    private MenuCarreras menu;
     
-
-    public Carrera(){}
-    public Carrera(String nombreCarrera , String dificultad) {
-        this.nombreCarrera = nombreCarrera;
+    public Carrera() {
         this.listaCaballos = new ArrayList<>();;
-        this.dificultad = dificultad;
-        new MenuCarreras().menuCarrera();
         
     }
     
-	public String getNombreCarrera() {
-        return nombreCarrera;
+    public void menuCarreras() {
+    	this.menu = new MenuCarreras();
+    	menu.menuCarrera();
     }
-
-    public void setNombreCarrera(String nombreCarrera) {
-        this.nombreCarrera = nombreCarrera;
-    }
-
+    
     public ArrayList<Caballo> getCaballoList() {
         return listaCaballos;
     }
 
     public void setCaballoList(ArrayList<Caballo> caballoList) {
         this.listaCaballos = caballoList;
-    }
-
-    public String getDificultad() {
-        return dificultad;
-    }
-
-    public void setDificultad(String dificultad) {
-        this.dificultad = dificultad;
     }
     
     void listarCaballos()

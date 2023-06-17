@@ -1,12 +1,14 @@
 package apuestas;
 
-import entes.Cliente;
+import entes.Caballo;
 
 public class ApuestaGanador extends Apuesta {
 
-	public ApuestaGanador(Cliente cliente, double monto) {
-		super(cliente, monto);
-		// TODO Auto-generated constructor stub
+	private Caballo ganador;
+
+	public ApuestaGanador(double monto, Caballo ganador) {
+		super(monto);
+		this.ganador = ganador;
 	}
 
 }

@@ -27,7 +27,7 @@ public class MenuCarreras {
                 int op = teclado.nextInt();
                 switch (op) {
                     case 1:
-                        System.out.println("Opcion 1");
+                        new MenuApuesta();
                         break;
 
                     case 2:
