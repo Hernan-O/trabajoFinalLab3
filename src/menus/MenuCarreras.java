@@ -7,9 +7,11 @@ import entes.Caballo;
 import hipodromo.Hipodromo;
 
 public class MenuCarreras {
+	private MenuApuesta menuApuesta;
+	
 	public MenuCarreras()
 	{
-		
+		menuApuesta = new MenuApuesta();
 	}
 	
 	public void listarCaballos()
@@ -38,7 +40,7 @@ public class MenuCarreras {
                 int op = teclado.nextInt();
                 switch (op) {
                     case 1:
-                        new MenuApuesta();
+                        menuApuesta.menu();
                         break;
 
                     case 2:

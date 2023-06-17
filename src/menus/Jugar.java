@@ -19,15 +19,15 @@ public class Jugar {
 	}
 	
 	public void elegirCarrera() {
-		int continuar = 0;
-        while (continuar == 0) {
+		boolean continuar = true;
+        while (continuar) {
             try {
 
                 System.out.println("*** CARRERAS ***");
         		System.out.println("1-" + campo_traviesa.toString());
         		System.out.println("2-" + obstaculos.toString());
         		System.out.println("3-" + lisa.toString());
-        		System.out.println("4-Salir " );
+        		System.out.println("4-ATRAS " );
 
                 int op = 0;
                 op = in.nextInt();
@@ -45,9 +45,7 @@ public class Jugar {
                     	lisa.menuCarreras();
                         break;
                     case 4:
-                        System.out.println("Fin juego");
-                        System.exit(0);
-                        
+                        continuar = false;
                         break;
 
                     default:

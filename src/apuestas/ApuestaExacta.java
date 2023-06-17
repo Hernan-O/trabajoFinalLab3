@@ -12,4 +12,11 @@ public class ApuestaExacta extends Apuesta {
 		this.segundo_puesto = segundo_puesto;
 	}
 
+	@Override
+	public boolean acertar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

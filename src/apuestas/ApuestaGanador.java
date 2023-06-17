@@ -11,4 +11,10 @@ public class ApuestaGanador extends Apuesta {
 		this.ganador = ganador;
 	}
 
+	@Override
+	public boolean acertar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

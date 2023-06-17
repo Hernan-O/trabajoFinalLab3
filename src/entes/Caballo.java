@@ -1,11 +1,13 @@
 package entes;
 
+import java.util.Random;
+
 public class Caballo {
     private int edad;
     private String nombre;
     private Jockey piloto;
     private String raza;
-    private float stat; //Le genera un numero al azar con el que se mide la posibilidad de ganar
+    private double probabilidadDeGanar;
 
     public Caballo(int edad,String nombre,Jockey piloto,String raza) {
         this.edad = edad;
@@ -14,7 +16,7 @@ public class Caballo {
         if (raza.equalsIgnoreCase("Arabe") || raza.equalsIgnoreCase("Anglo") || raza.equalsIgnoreCase("Americano")) {
             this.raza = raza;
         }
-        this.stat =(float)(Math.random()*10+1);
+        this.probabilidadDeGanar = new Random().nextDouble();
     }
     public int getEdad() {
         return edad;
@@ -47,20 +49,21 @@ public class Caballo {
     public void setPiloto(Jockey piloto) {
         this.piloto = piloto;
     }
-    public void setStat(){
-        this.stat =(float)(Math.random()*10+1);
-    }
-    public float getStat(){
-        return this.stat;
-    }
-    public void mostrarInformacion(){
+
+    public double getProbabilidadDeGanar() {
+		return probabilidadDeGanar;
+	}
+	public void setProbabilidadDeGanar(double probabilidadDeGanar) {
+		this.probabilidadDeGanar = probabilidadDeGanar;
+	}
+	public void mostrarInformacion(){
         System.out.println("Nombre del caballo:"+this.getNombre()+"\nEdad caballo"+this.getEdad());
         this.piloto.mostrarInformacion();
     }
 	@Override
 	public String toString() {
-		return "Caballo [edad=" + edad + ", nombre=" + nombre + ", piloto=" + piloto + ", raza=" + raza + ", stat="
-				+ stat + "]";
+		return "Caballo [edad=" + edad + ", nombre=" + nombre + ", piloto=" + piloto + ", raza=" + raza + 
+				"Probabilidad de ganar= " + probabilidadDeGanar + "]";
 	}
     
     

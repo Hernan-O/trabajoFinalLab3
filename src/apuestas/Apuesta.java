@@ -9,5 +9,5 @@ public abstract class Apuesta {
 		this.monto = monto;
 	}
     
-   
+   public abstract boolean acertar();
 }
