@@ -6,16 +6,14 @@ public class Caballo {
     private int edad;
     private String nombre;
     private Jockey piloto;
-    private String raza;
+    private Raza raza;
     private double probabilidadDeGanar;
 
-    public Caballo(int edad,String nombre,Jockey piloto,String raza) {
+    public Caballo(int edad,String nombre,Jockey piloto,Raza raza) {
         this.edad = edad;
         this.nombre = nombre;
         this.piloto = piloto;
-        if (raza.equalsIgnoreCase("Arabe") || raza.equalsIgnoreCase("Anglo") || raza.equalsIgnoreCase("Americano")) {
-            this.raza = raza;
-        }
+        this.raza = raza;
         this.probabilidadDeGanar = new Random().nextDouble();
     }
     public int getEdad() {
@@ -34,11 +32,11 @@ public class Caballo {
         this.nombre = nombre;
     }
 
-    public String getRaza() {
+    public Raza getRaza() {
         return raza;
     }
 
-    public void setRaza(String raza) {
+    public void setRaza(Raza raza) {
         this.raza = raza;
     }
 
@@ -62,7 +60,7 @@ public class Caballo {
     }
 	@Override
 	public String toString() {
-		return "Caballo [edad=" + edad + ", nombre=" + nombre + ", piloto=" + piloto + ", raza=" + raza + 
+		return "Caballo [edad=" + edad + ", nombre=" + nombre + ", piloto=" + piloto + ", raza=" + this.getRaza() + 
 				"Probabilidad de ganar= " + probabilidadDeGanar + "]";
 	}
     
