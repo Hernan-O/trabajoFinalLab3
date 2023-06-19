@@ -45,5 +45,15 @@ public class ResultadoCarrera {
 			i++;
 		} 
 	}
+
+	public ArrayList<Caballo> getOrdenDeLlegada() {
+		return ordenDeLlegada;
+	}
+
+	public void setOrdenDeLlegada(ArrayList<Caballo> ordenDeLlegada) {
+		this.ordenDeLlegada = ordenDeLlegada;
+	}
+	
+	
 	
 }

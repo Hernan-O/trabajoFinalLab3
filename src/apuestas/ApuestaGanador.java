@@ -1,5 +1,7 @@
 package apuestas;
 
+import java.util.InputMismatchException;
+
 import entes.Caballo;
 
 public class ApuestaGanador extends Apuesta {
@@ -16,5 +18,7 @@ public class ApuestaGanador extends Apuesta {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	
 }
+

@@ -14,13 +14,7 @@ public class MenuCarreras {
 		menuApuesta = new MenuApuesta();
 	}
 	
-	public void listarCaballos()
-	{
-		for(Caballo caballo : Hipodromo.caballos)
-		{
-			System.out.println(caballo.toString());
-		}
-	}
+	
 	
 	public void menuCarrera()
     {
@@ -45,7 +39,7 @@ public class MenuCarreras {
 
                     case 2:
                         System.out.println("Opcion 2");
-                        listarCaballos();
+                        Hipodromo.listarCaballos();
                         break;
                        
                     case 3:

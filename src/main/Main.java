@@ -3,6 +3,7 @@ package main;
 import java.util.HashSet;
 
 import entes.Caballo;
+import entes.Raza;
 import hipodromo.Hipodromo;
 
 public class Main {

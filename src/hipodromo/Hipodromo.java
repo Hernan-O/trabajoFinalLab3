@@ -78,4 +78,14 @@ public class Hipodromo {
     		
     	}
     }
+    
+    public static void listarCaballos()
+	{
+    	int i = 1;
+		for(Caballo caballo : caballos)
+		{
+			System.out.println(i + caballo.getNombre());
+			i++;
+		}
+	}
 }
