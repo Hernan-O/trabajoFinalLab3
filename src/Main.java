@@ -40,7 +40,7 @@ public class Main {
         lista.add(caballo10);
 
         try{
-            File archivo = new File("C:/Users/Felip/Desktop/Prueba FINAL/untitled/caballos.txt");
+            File archivo = new File("caballos.txt");
             ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
 
             obj.writeObject(lista);

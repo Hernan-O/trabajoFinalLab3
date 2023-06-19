@@ -22,7 +22,7 @@ public abstract class Apuesta implements Apostable {
     {
         ArrayList<Caballo> aux= new ArrayList<>();
         try{
-            File archivo = new File("C:\\Users\\Felip\\Desktop\\Prueba FINAL\\untitled\\caballos.txt");
+            File archivo = new File("caballos.txt");
 
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo));
 
