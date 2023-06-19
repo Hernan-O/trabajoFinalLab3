@@ -13,9 +13,10 @@ public class Exacta extends Apuesta{
 
     private Caballo ganador;
 
-    public Exacta()
+    public Exacta(int cuentaUser)
     {
         super();
+        this.getCuentaUser().setSaldo(cuentaUser);
         this.ganador = ordenar().get(0);
     }
 
@@ -35,16 +36,23 @@ public class Exacta extends Apuesta{
         return resultado;
     }
 
-
-    public void desplegarMenu() throws opcionInexistente
+    public Saldo devolverTotal(){
+        return this.getCuentaUser();
+    }
+    public Saldo desplegarMenu() throws opcionInexistente
     {
         Scanner in = new Scanner(System.in);
         super.imprimirLista();
-
+        Saldo cuentaAux = this.getCuentaUser();
         try{
             System.out.println("Ingrese el caballo ganador");
             int op = in.nextInt();
-
+            System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
+            int apuesta = in.nextInt();
+            if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
+                System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
+                apuesta = 0;
+            }
             if(op > 10 || op <= 0)
             {
               throw new opcionInexistente();
@@ -53,10 +61,14 @@ public class Exacta extends Apuesta{
             if(super.getListaOrden().get(op).equals(ganador))
             {
                 System.out.println("GANASTE");
+                cuentaAux.apuestaGanada(apuesta);
             }else
             {
                 System.out.println("Perdiste");
+                cuentaAux.apuestaPerdida(apuesta);
             }
+            System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
+            return cuentaAux;
 
         }catch (InputMismatchException e)
         {
@@ -66,8 +78,6 @@ public class Exacta extends Apuesta{
         {
             System.out.println("Entre 1 y 10");
         }
-
-
+        return cuentaAux;
     }
-
 }

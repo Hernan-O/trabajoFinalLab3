@@ -9,14 +9,13 @@ import java.util.ArrayList;
 public abstract class Apuesta implements Apostable {
 
     private ArrayList<Caballo> listaOrden;
+    private Saldo cuentaUser = new Saldo();
 
     public ArrayList<Caballo> getListaOrden() {
         return listaOrden;
     }
-    public Apuesta()
-    {
-        this.listaOrden=archivoBuffer();
-
+    public Apuesta() {
+        this.listaOrden = archivoBuffer();
     }
     public ArrayList<Caballo> archivoBuffer()
     {
@@ -46,10 +45,18 @@ public abstract class Apuesta implements Apostable {
         return aux;
     }
 
+    public Saldo getCuentaUser() {
+        return cuentaUser;
+    }
+
+    public void setCuentaUser(Saldo cuentaUser) {
+        this.cuentaUser = cuentaUser;
+    }
+
     public void imprimirLista()
     {
         System.out.println("Lista de caballos");
-        int i =1;
+        int i = 1;
         for(Caballo ca: getListaOrden())
         {
             System.out.println(i + ":" +ca.toString());
@@ -57,5 +64,4 @@ public abstract class Apuesta implements Apostable {
             i++;
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package Menus;
 
+import Apuestas.Saldo;
 import Carreras.Carrera;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.Scanner;
 
 public class MenuCarrera {
 
+    private Saldo cuentaUser = new Saldo(20000);//Arranca con 20k para probár, se puede poner como archivo para guardar la plata total.
     private ArrayList<Carrera> carreras;
 
     public ArrayList<Carrera> getCarreras() {
@@ -57,6 +59,7 @@ public class MenuCarrera {
                 switch (op) {
                     case 1:
                         MenuApuesta siguiente0 = new MenuApuesta(getCarreras().get(0));
+                        this.cuentaUser = siguiente0.getCuentaUser();
                         break;
                     case 2:
                         MenuApuesta siguiente1 = new MenuApuesta(getCarreras().get(1));
