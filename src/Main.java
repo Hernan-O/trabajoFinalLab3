@@ -10,9 +10,9 @@ public class Main {
 
         Jugar juego = new Jugar();
 
-/*
-        // INSTANCIAS Y CREACION DEL ARCHIVO.
 
+        // INSTANCIAS Y CREACION DEL ARCHIVO.
+    	/*
         String[] nombres = {"Trotrón", "Relámpago", "Viento Veloz", "Galope Brillante", "Centella", "Rayo Dorado", "Fuego Salvaje", "Mariposa Veloz", "Estrella Fulgurante", "Tormenta Cautivadora"};
 
         Caballo caballo1 = new Caballo(nombres[0], 3, 0);
@@ -54,8 +54,8 @@ public class Main {
 
             System.out.println(e.getMessage());
         }
-*/
-/*
+        
+
         Saldo saldito = new Saldo();
 
         try{
@@ -73,9 +73,8 @@ public class Main {
 
             System.out.println(e.getMessage());
         }
+        */
 
-
- */
 
 
 

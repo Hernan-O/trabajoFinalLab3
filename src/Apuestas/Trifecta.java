@@ -96,17 +96,19 @@ public class Trifecta extends Apuesta{
             }
 
             System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
-            int apuesta = in.nextInt();
+            float apuesta = in.nextFloat();
             if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
                 System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
                 apuesta = 0;
             }
 
-
             if(resultado(resultado))
             {
+            	float modificarSumadoGanadores = resultado.get(0).getPorcentajeGanancia()+
+            			resultado.get(1).getPorcentajeGanancia() + 
+            			resultado.get(2).getPorcentajeGanancia();
                 System.out.println("GANASTE");
-                cuentaAux.apuestaGanada(apuesta);
+                cuentaAux.apuestaGanada(apuesta, modificarSumadoGanadores);
             }else
             {
                 System.out.println("Perdiste");
@@ -125,8 +127,6 @@ public class Trifecta extends Apuesta{
         }
         super.setCuentaUser(cuentaAux);
     }
-
-
 
     public boolean resultado(ArrayList<Caballo> resu)
     {

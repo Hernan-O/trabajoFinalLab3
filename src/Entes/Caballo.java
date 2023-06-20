@@ -9,7 +9,28 @@ public class Caballo implements Serializable {
     private String nombre;
     private String nRaza;
     private float probabilidad;
+    private float montoAcumuladoApuestas;
+    private float porcentajeGanancia;
+    
+    
+    public float getPorcentajeGanancia() {
+		return porcentajeGanancia;
+	}
 
+	public void setPorcentajeGanancia(float porcentajeGanancia) {
+		this.porcentajeGanancia = porcentajeGanancia;
+	}
+
+	public float getMontoAcumuladoApuestas()
+    {
+    	return montoAcumuladoApuestas;
+    }
+    
+    public void setMontoAcumuladoApuestas(float montoAcumulado)
+    {
+    	this.montoAcumuladoApuestas = montoAcumulado;
+    }	
+   
     public float getProbabilidad() {
         return probabilidad;
     }
@@ -33,6 +54,7 @@ public class Caballo implements Serializable {
         this.nombre=nombre;
         this.edad=edad;
         this.probabilidad = new Random().nextFloat()*100+1;
+        
     }
 
     public void setProbabilidad(float probabilidad) {
@@ -51,7 +73,7 @@ public class Caballo implements Serializable {
     {
         return  "Nombre: "+ getNombre()+"\n" +
                 "Edad: "+ getEdad()+"\n"+
-                "Raza: "+ getnRaza()+"\n";
+                "Raza: "+ getnRaza();
     }
 
     @Override

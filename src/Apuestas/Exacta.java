@@ -48,7 +48,7 @@ public class Exacta extends Apuesta{
             System.out.println("Ingrese el caballo ganador");
             int op = in.nextInt();
             System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
-            int apuesta = in.nextInt();
+            float apuesta = in.nextFloat();
             if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
                 System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
                 apuesta = 0;
@@ -61,7 +61,7 @@ public class Exacta extends Apuesta{
             if(super.getListaOrden().get(op).equals(ganador))
             {
                 System.out.println("GANASTE");
-                cuentaAux.apuestaGanada(apuesta);
+                cuentaAux.apuestaGanada(apuesta, super.getListaOrden().get(op).getPorcentajeGanancia());
             }else
             {
                 System.out.println("Perdiste");

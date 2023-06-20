@@ -41,14 +41,17 @@ public class MenuApuesta {
                 switch (op) {
                     case 1:
                         Exacta siguiente0 = new Exacta(tipo,getCuentaUser());
+                        siguiente0.calcularPorcentajeMonto();
                         siguiente0.desplegarMenu();
                         break;
                     case 2:
                         Trifecta siguiente1 = new Trifecta(tipo,getCuentaUser());
+                        siguiente1.calcularPorcentajeMonto();
                         siguiente1.desplegarMenu();
                         break;
                     case 3:
                         Imperfecta siguiente2 = new Imperfecta(tipo,getCuentaUser());
+                        siguiente2.calcularPorcentajeMonto();
                         siguiente2.desplegarMenu();
                     case 4:
 

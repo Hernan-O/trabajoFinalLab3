@@ -120,8 +120,7 @@ public class MenuCarrera {
                         break;
                     case 4:
                         bufferArchivoSaldo();
-                        System.out.println("Fin juego");
-                        System.exit(0);
+                        continuar=1;
                         break;
 
                     default:

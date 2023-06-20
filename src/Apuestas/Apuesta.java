@@ -6,6 +6,7 @@ import Interfaces.Apostable;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Apuesta implements Apostable {
 
@@ -58,7 +59,7 @@ public abstract class Apuesta implements Apostable {
     }
 
     public Saldo getCuentaUser() {
-        return cuentaUser;
+        return cuentaUser; 
     }
 
     public void setCuentaUser(Saldo cuentaUser) {
@@ -73,10 +74,36 @@ public abstract class Apuesta implements Apostable {
         {
             System.out.println(i + ":" +ca.toString());
             System.out.println("Prob Victoria: "+ ca.getProbabilidad());
+            System.out.println("Monto de apuestas acumulado: "+ ca.getMontoAcumuladoApuestas());
+            System.out.println("Modificador apuesta: "+ ca.getPorcentajeGanancia()+"\n");
+            
             i++;
         }
     }
+    
+    public void calcularPorcentajeMonto()
+    {
+    	float suma=0;
+    	float resultado;
+    	
+    	for(Caballo ca: getListaOrden())
+    	{
+    		ca.setMontoAcumuladoApuestas((new Random().nextFloat(0,1)*2)*ca.getProbabilidad());
+    		suma=ca.getMontoAcumuladoApuestas()+suma;
+    	}
 
+    	for(Caballo ca: getListaOrden())
+    	{
+    		
+    		resultado = (ca.getMontoAcumuladoApuestas()*100)/suma;
+        	ca.setPorcentajeGanancia((float) (100-(resultado))/ca.getProbabilidad());
+
+    	}
+    	 System.out.println("Total: "+suma);
+    	
+    }
+    
+    
     public boolean existe(Caballo ente,ArrayList<Caballo> datos)
     {
         for(Caballo c:datos)

@@ -2,30 +2,32 @@ package Apuestas;
 
 import java.io.Serializable;
 
+import Entes.Caballo;
+
 public class Saldo implements Serializable {
-    private int saldo;
+    private float saldo;
 
     public Saldo() {
         this.saldo=20000;
     }
 
-    public Saldo(int saldoActual) {
+    public Saldo(float saldoActual) {
         this.saldo = saldoActual;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
 
-    public int getSaldo() {
+    public float getSaldo() {
         return saldo;
     }
 
-    public void apuestaPerdida(int apuesta) {
+    public void apuestaPerdida(float apuesta) {
         this.saldo = saldo - apuesta;
     }
 
-    public void apuestaGanada(int apuesta) {
-        this.saldo = this.saldo + (apuesta * 2);
+    public void apuestaGanada(float apuesta, float modificador) {
+        this.saldo = this.saldo + (apuesta + (apuesta * modificador));
     }
 }
