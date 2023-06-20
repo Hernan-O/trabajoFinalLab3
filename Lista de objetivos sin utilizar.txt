@@ -1,0 +1,17 @@
+Lista de objetivos sin utilizar 
+Static: No tenemos a la fecha ninguna implementación
+Genericos: No tenemos a la fecha ninguna implementación
+Map: No temenos a la fecha ninguna implementación
+Set: No tenemos a la fecha ninguna implementación
+
+Objetivos utilizados:
+Herencia: Esta implementado en la superclase apuestas y en sus subclases Exacta, imperfecta, etc-
+Polimorfismo: en sus subclases Exacta, imperfecta, etc-
+Casteo: en sus subclases Exacta, imperfecta, etc-
+Interfaces: Apostable
+Collections: ArrayList en Apuestas, ArrayList en apuestas, 
+Equals: Clase Caballo
+HashCode: Clase Caballo
+Enum: Clase Carrera, Caballo
+Excepciones: Opción Inexistente, Try en todos los menues
+Archivos: A la fecha solo se almacena los caballos
