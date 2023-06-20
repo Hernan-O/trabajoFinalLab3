@@ -3,13 +3,14 @@ package Menus;
 import Apuestas.Saldo;
 import Carreras.Carrera;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuCarrera {
 
-    private Saldo cuentaUser = new Saldo(20000);//Arranca con 20k para probár, se puede poner como archivo para guardar la plata total.
+    private Saldo cuentaUser;
     private ArrayList<Carrera> carreras;
 
     public ArrayList<Carrera> getCarreras() {
@@ -23,7 +24,58 @@ public class MenuCarrera {
     public MenuCarrera()
     {
         this.carreras=crearCarreras();
+        this.cuentaUser=archivoBufferSaldo();
         desplegarMenu();
+    }
+
+    public Saldo getCuentaUser() {
+        return cuentaUser;
+    }
+
+    public Saldo archivoBufferSaldo()
+    {
+        Saldo saldo= new Saldo();
+        try{
+            File archivo = new File("saldo.txt");
+
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo));
+
+            saldo = (Saldo)in.readObject();
+            in.close();
+
+        }catch (ClassNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return saldo;
+    }
+
+    public void bufferArchivoSaldo()
+    {
+        try{
+            File archivo = new File("saldo.txt");
+
+            ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
+
+            obj.writeObject(getCuentaUser());
+
+            obj.close();
+
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     public ArrayList<Carrera> crearCarreras()
@@ -58,16 +110,16 @@ public class MenuCarrera {
                 in.nextLine();
                 switch (op) {
                     case 1:
-                        MenuApuesta siguiente0 = new MenuApuesta(getCarreras().get(0));
-                        this.cuentaUser = siguiente0.getCuentaUser();
+                        MenuApuesta siguiente0 = new MenuApuesta(getCarreras().get(0), getCuentaUser());
                         break;
                     case 2:
-                        MenuApuesta siguiente1 = new MenuApuesta(getCarreras().get(1));
+                        MenuApuesta siguiente1 = new MenuApuesta(getCarreras().get(1),getCuentaUser());
                         break;
                     case 3:
-                        MenuApuesta siguiente2 = new MenuApuesta(getCarreras().get(2));
+                        MenuApuesta siguiente2 = new MenuApuesta(getCarreras().get(2), getCuentaUser());
                         break;
                     case 4:
+                        bufferArchivoSaldo();
                         System.out.println("Fin juego");
                         System.exit(0);
                         break;

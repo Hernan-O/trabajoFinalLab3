@@ -13,10 +13,9 @@ public class Exacta extends Apuesta{
 
     private Caballo ganador;
 
-    public Exacta(int cuentaUser)
+    public Exacta(Saldo saldo)
     {
-        super();
-        this.getCuentaUser().setSaldo(cuentaUser);
+        super(saldo);
         this.ganador = ordenar().get(0);
     }
 
@@ -39,7 +38,7 @@ public class Exacta extends Apuesta{
     public Saldo devolverTotal(){
         return this.getCuentaUser();
     }
-    public Saldo desplegarMenu() throws opcionInexistente
+    public void desplegarMenu() throws opcionInexistente
     {
         Scanner in = new Scanner(System.in);
         super.imprimirLista();
@@ -68,7 +67,7 @@ public class Exacta extends Apuesta{
                 cuentaAux.apuestaPerdida(apuesta);
             }
             System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
-            return cuentaAux;
+            super.setCuentaUser(cuentaAux);
 
         }catch (InputMismatchException e)
         {
@@ -78,6 +77,6 @@ public class Exacta extends Apuesta{
         {
             System.out.println("Entre 1 y 10");
         }
-        return cuentaAux;
+        super.setCuentaUser(cuentaAux);
     }
 }

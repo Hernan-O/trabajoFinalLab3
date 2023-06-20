@@ -4,6 +4,7 @@ import Apuestas.*;
 import Carreras.Carrera;
 import Excepciones.*;
 
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -11,24 +12,13 @@ import java.util.Scanner;
 
 public class MenuApuesta {
 
-    private ArrayList<Apuesta> apuestas;
     private Carrera tipo;
-    private Saldo cuentaUser = new Saldo(20000);    //Arranca con 20k, la idea es que sea un archivito o algo que mantenga persistencia
+    private Saldo cuentaUser;   //Arranca con 20k, la idea es que sea un archivito o algo que mantenga persistencia
 
-    public MenuApuesta(Carrera dat) {
-        this.apuestas = crearApuesta();
+    public MenuApuesta(Carrera dat,Saldo saldo) {
+        this.cuentaUser=saldo;
         desplegarMenu();
     }
-
-    public ArrayList<Apuesta> crearApuesta() {
-        ArrayList<Apuesta> retorno = new ArrayList<>();
-        Apuesta exacta = new Exacta(this.cuentaUser.getSaldo()); //arranca con 20k, pero puede ser un archivo
-
-        retorno.add(exacta);
-
-        return retorno;
-    }
-
 
     public Saldo getCuentaUser() {
         return cuentaUser;
@@ -50,17 +40,18 @@ public class MenuApuesta {
 
                 switch (op) {
                     case 1:
-                        Exacta siguiente0 = new Exacta(this.cuentaUser.getSaldo());
-                        this.cuentaUser = siguiente0.desplegarMenu();
+                        Exacta siguiente0 = new Exacta(getCuentaUser());
+                        siguiente0.desplegarMenu();
                         break;
                     case 2:
-                        Trifecta siguiente1 = new Trifecta(this.cuentaUser.getSaldo());
-                        this.cuentaUser = siguiente1.desplegarMenu();
+                        Trifecta siguiente1 = new Trifecta(getCuentaUser());
+                        siguiente1.desplegarMenu();
                         break;
                     case 3:
-                        Imperfecta siguiente2 = new Imperfecta(this.cuentaUser.getSaldo());
-                        this.cuentaUser = siguiente2.desplegarMenu();
+                        Imperfecta siguiente2 = new Imperfecta(getCuentaUser());
+                        siguiente2.desplegarMenu();
                     case 4:
+
                         continuar =1;
                         break;
 

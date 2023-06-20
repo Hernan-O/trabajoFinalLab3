@@ -14,9 +14,9 @@ public abstract class Apuesta implements Apostable {
     public ArrayList<Caballo> getListaOrden() {
         return listaOrden;
     }
-    public Apuesta() {
+    public Apuesta(Saldo saldo) {
+        this.cuentaUser=saldo;
         this.listaOrden = archivoBuffer();
-        this.cuentaUser = new Saldo();
     }
     public ArrayList<Caballo> archivoBuffer()
     {

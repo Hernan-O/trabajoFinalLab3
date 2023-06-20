@@ -10,10 +10,9 @@ public class Imperfecta extends Apuesta{
     private ArrayList<Caballo> tresPrimeros;
 
 
-    public Imperfecta(int cuentaUser)
+    public Imperfecta(Saldo saldo)
     {
-        super();
-        this.getCuentaUser().setSaldo(cuentaUser);
+        super(saldo);
         this.tresPrimeros=ordenar();
     }
 
@@ -23,18 +22,23 @@ public class Imperfecta extends Apuesta{
         ArrayList<Caballo> resultado = new ArrayList<>(super.getListaOrden());
         Collections.shuffle(resultado);
 
-        return resultado;
+        ArrayList<Caballo> aux = new ArrayList<>();
+        aux.add(resultado.get(0));
+        aux.add(resultado.get(1));
+        aux.add(resultado.get(2));
+
+        return aux;
     }
 
-    public Saldo desplegarMenu() throws opcionInexistente
+    public void desplegarMenu() throws opcionInexistente
     {
         ArrayList<Caballo> resultado=new ArrayList<>();
         Scanner in = new Scanner(System.in);
         super.imprimirLista();
         System.out.println("MOSTRANDO RESULTADOS");
         System.out.println("N1: "+tresPrimeros.get(0).getNombre());
-        System.out.println("N1: "+tresPrimeros.get(1).getNombre());
-        System.out.println("N1: "+tresPrimeros.get(2).getNombre());
+        System.out.println("N2: "+tresPrimeros.get(1).getNombre());
+        System.out.println("N3: "+tresPrimeros.get(2).getNombre());
 
         Saldo cuentaAux = this.getCuentaUser();
         try{
@@ -64,7 +68,11 @@ public class Imperfecta extends Apuesta{
                 apuesta = 0;
             }
 
-            if(resultado(resultado))
+            System.out.println("INTENTO 1: "+ resultado.get(0).getNombre());
+            System.out.println("INTENTO 2: "+ resultado.get(1).getNombre());
+            System.out.println("INTENTO 3: "+ resultado.get(2).getNombre());
+
+            if(resultado(tresPrimeros,resultado))
             {
                 System.out.println("GANASTE");
                 cuentaAux.apuestaGanada(apuesta);
@@ -74,7 +82,7 @@ public class Imperfecta extends Apuesta{
                 cuentaAux.apuestaPerdida(apuesta);
             }
             System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
-            return cuentaAux;
+            super.setCuentaUser(cuentaAux);
 
         }catch (InputMismatchException e)
         {
@@ -84,14 +92,14 @@ public class Imperfecta extends Apuesta{
         {
             System.out.println("Entre 1 y 10");
         }
-        return cuentaAux;
+        super.setCuentaUser(cuentaAux);
     }
 
-    public boolean resultado(ArrayList<Caballo> ca)
+    public boolean resultado(ArrayList<Caballo> resultado,ArrayList<Caballo> intento)
     {
-        for(Caballo c:super.getListaOrden())
+        for(Caballo c:intento)
         {
-            if(!(existe(c,ca)))
+            if(!(existe(c,resultado)))
             {
                 return false;
             }

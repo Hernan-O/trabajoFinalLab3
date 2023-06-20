@@ -1,3 +1,4 @@
+import Apuestas.Saldo;
 import Menus.Jugar;
 import Entes.*;
 
@@ -54,9 +55,31 @@ public class Main {
             System.out.println(e.getMessage());
         }
 */
+/*
+        Saldo saldito = new Saldo();
 
+        try{
+            File archivo = new File("saldo.txt");
+            ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
+
+            obj.writeObject(saldito);
+
+            obj.close();
+
+        }catch (FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }catch (IOException e){
+
+            System.out.println(e.getMessage());
+        }
+
+
+
+*/
 
 
 
     }
 }
+

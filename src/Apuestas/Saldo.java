@@ -1,9 +1,12 @@
 package Apuestas;
 
-public class Saldo {
+import java.io.Serializable;
+
+public class Saldo implements Serializable {
     private int saldo;
 
     public Saldo() {
+        this.saldo=20000;
     }
 
     public Saldo(int saldoActual) {

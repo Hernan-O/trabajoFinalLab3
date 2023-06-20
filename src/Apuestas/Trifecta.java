@@ -9,10 +9,9 @@ public class Trifecta extends Apuesta{
 
     private ArrayList<Caballo> ganadores;
 
-    public Trifecta(int cuentaUser)
+    public Trifecta(Saldo saldo)
     {
-        super();
-        this.getCuentaUser().setSaldo(cuentaUser);
+        super(saldo);
         this.ganadores=ordenar();
 
     }
@@ -23,10 +22,15 @@ public class Trifecta extends Apuesta{
         ArrayList<Caballo> resultado = new ArrayList<>(super.getListaOrden());
         Collections.shuffle(resultado);
 
-        return resultado;
+        ArrayList<Caballo> aux = new ArrayList<>();
+        aux.add(resultado.get(0));
+        aux.add(resultado.get(1));
+        aux.add(resultado.get(2));
+
+        return aux;
     }
 
-    public Saldo desplegarMenu() throws opcionInexistente
+    public void desplegarMenu() throws opcionInexistente
     {
         ArrayList<Caballo> resultado=new ArrayList<>();
         Scanner in = new Scanner(System.in);
@@ -75,7 +79,7 @@ public class Trifecta extends Apuesta{
                 cuentaAux.apuestaPerdida(apuesta);
             }
             System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
-            return cuentaAux;
+            super.setCuentaUser(cuentaAux);
 
         }catch (InputMismatchException e)
         {
@@ -85,7 +89,7 @@ public class Trifecta extends Apuesta{
         {
             System.out.println("Entre 1 y 10");
         }
-        return cuentaAux;
+        super.setCuentaUser(cuentaAux);
     }
 
 

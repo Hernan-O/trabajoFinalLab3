@@ -55,7 +55,7 @@ public class Caballo implements Serializable {
         if(!(obj instanceof Caballo)){return false;}
         else{
             Caballo nuevo = (Caballo) obj;
-            return nuevo.getNombre().equals(getNombre());
+            return nuevo.getNombre().equals(this.getNombre());
         }
     }
 
