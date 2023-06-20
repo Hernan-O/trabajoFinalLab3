@@ -1,5 +1,6 @@
 package Apuestas;
 
+import Carreras.Carrera;
 import Entes.Caballo;
 import Interfaces.Apostable;
 
@@ -10,11 +11,13 @@ public abstract class Apuesta implements Apostable {
 
     private ArrayList<Caballo> listaOrden;
     private Saldo cuentaUser;
+    private Carrera tipo;
 
     public ArrayList<Caballo> getListaOrden() {
         return listaOrden;
     }
-    public Apuesta(Saldo saldo) {
+    public Apuesta(Carrera dat,Saldo saldo) {
+        this.tipo = dat;
         this.cuentaUser=saldo;
         this.listaOrden = archivoBuffer();
     }
@@ -44,6 +47,14 @@ public abstract class Apuesta implements Apostable {
             System.out.println(e.getMessage());
         }
         return aux;
+    }
+
+    public Carrera getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Carrera tipo) {
+        this.tipo = tipo;
     }
 
     public Saldo getCuentaUser() {

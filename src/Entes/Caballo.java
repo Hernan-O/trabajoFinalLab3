@@ -34,6 +34,11 @@ public class Caballo implements Serializable {
         this.edad=edad;
         this.probabilidad = new Random().nextFloat()*100+1;
     }
+
+    public void setProbabilidad(float probabilidad) {
+        this.probabilidad = probabilidad;
+    }
+
     private enum Raza
     {
         ANGLO,

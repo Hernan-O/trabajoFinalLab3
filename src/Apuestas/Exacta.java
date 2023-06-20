@@ -1,5 +1,6 @@
 package Apuestas;
 
+import Carreras.Carrera;
 import Entes.Caballo;
 
 import java.util.ArrayList;
@@ -11,22 +12,25 @@ import Excepciones.*;
 
 public class Exacta extends Apuesta{
     private Caballo ganador;
-    public Exacta(Saldo saldo)
+    public Exacta(Carrera dat, Saldo saldo)
     {
-        super(saldo);
+        super(dat,saldo);
         this.ganador = ordenar().get(0);
     }
     @Override
     public ArrayList<Caballo> ordenar()
     {
         ArrayList<Caballo> resultado = new ArrayList<>();
-        resultado.add(super.getListaOrden().get(0));
+        ArrayList<Caballo> aux = new ArrayList<>();
+        aux = super.getListaOrden();
+        aux = this.getTipo().cambiaProb(aux);
+        resultado.add(aux.get(0));
 
-        for(int i = 1; i < super.getListaOrden().size(); i++) {
+        for(int i = 1; i < aux.size(); i++) {
 
-             if(resultado.get(0).getProbabilidad()<super.getListaOrden().get(i).getProbabilidad())
+             if(resultado.get(0).getProbabilidad()<aux.get(i).getProbabilidad())
              {
-                 resultado.set(0,super.getListaOrden().get(i));
+                 resultado.set(0,aux.get(i));
              }
         }
         return resultado;

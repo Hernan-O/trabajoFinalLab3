@@ -1,5 +1,6 @@
 package Apuestas;
 
+import Carreras.Carrera;
 import Entes.Caballo;
 import Excepciones.opcionInexistente;
 
@@ -10,10 +11,11 @@ public class Imperfecta extends Apuesta{
     private ArrayList<Caballo> tresPrimeros;
 
 
-    public Imperfecta(Saldo saldo)
+    public Imperfecta(Carrera dat, Saldo saldo)
     {
-        super(saldo);
+        super(dat,saldo);
         this.tresPrimeros=ordenar();
+        this.tresPrimeros = this.getTipo().cambiaProb(this.tresPrimeros);
     }
 
     @Override

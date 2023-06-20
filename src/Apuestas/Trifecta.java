@@ -1,5 +1,6 @@
 package Apuestas;
 
+import Carreras.Carrera;
 import Entes.Caballo;
 import Excepciones.opcionInexistente;
 
@@ -9,11 +10,11 @@ public class Trifecta extends Apuesta{
 
     private ArrayList<Caballo> ganadores;
 
-    public Trifecta(Saldo saldo)
+    public Trifecta(Carrera dat,Saldo saldo)
     {
-        super(saldo);
+        super(dat,saldo);
         this.ganadores=ordenar();
-
+        this.ganadores = this.getTipo().cambiaProb(this.ganadores);
     }
 
     @Override
