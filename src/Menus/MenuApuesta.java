@@ -54,8 +54,14 @@ public class MenuApuesta {
                         this.cuentaUser = siguiente0.desplegarMenu();
                         break;
                     case 2:
-                        System.out.println("Fin juego");
-                        System.exit(0);
+                        Trifecta siguiente1 = new Trifecta(this.cuentaUser.getSaldo());
+                        this.cuentaUser = siguiente1.desplegarMenu();
+                        break;
+                    case 3:
+                        Imperfecta siguiente2 = new Imperfecta(this.cuentaUser.getSaldo());
+                        this.cuentaUser = siguiente2.desplegarMenu();
+                    case 4:
+                        continuar =1;
                         break;
 
                     default:

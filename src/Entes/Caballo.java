@@ -58,4 +58,10 @@ public class Caballo implements Serializable {
             return nuevo.getNombre().equals(getNombre());
         }
     }
+
+    @Override
+    public int hashCode() {
+        return this.getNombre().hashCode();
+    }
+
 }

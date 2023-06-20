@@ -9,13 +9,14 @@ import java.util.ArrayList;
 public abstract class Apuesta implements Apostable {
 
     private ArrayList<Caballo> listaOrden;
-    private Saldo cuentaUser = new Saldo();
+    private Saldo cuentaUser;
 
     public ArrayList<Caballo> getListaOrden() {
         return listaOrden;
     }
     public Apuesta() {
         this.listaOrden = archivoBuffer();
+        this.cuentaUser = new Saldo();
     }
     public ArrayList<Caballo> archivoBuffer()
     {
@@ -64,4 +65,17 @@ public abstract class Apuesta implements Apostable {
             i++;
         }
     }
+
+    public boolean existe(Caballo ente,ArrayList<Caballo> datos)
+    {
+        for(Caballo c:datos)
+        {
+            if(c.equals(ente))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

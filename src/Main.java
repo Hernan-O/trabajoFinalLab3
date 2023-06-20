@@ -9,7 +9,6 @@ public class Main {
 
         Jugar juego = new Jugar();
 
-
 /*
         // INSTANCIAS Y CREACION DEL ARCHIVO.
 
