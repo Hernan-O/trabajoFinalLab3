@@ -19,6 +19,36 @@ public class Trifecta extends Apuesta{
     @Override
     public ArrayList<Caballo> ordenar()
     {
+        ArrayList<Caballo> seleccionados = new ArrayList<>();
+        Random random = new Random();
+
+        // Calcula la suma total de las probabilidades
+        double sumaProbabilidades = 0.0;
+        for (Caballo objeto : super.getListaOrden()) {
+            sumaProbabilidades += objeto.getProbabilidad();
+        }
+
+        for (int i = 0; i <= 3; i++) {
+            double r = random.nextDouble() * sumaProbabilidades;
+            double acumulado = 0.0;
+            int selectedIndex = -1;
+            for (int j = 0; j < super.getListaOrden().size(); j++) {
+                Caballo objeto = super.getListaOrden().get(j);
+                acumulado += objeto.getProbabilidad();
+                if (r <= acumulado) {
+                    selectedIndex = j;
+                    break;
+                }
+            }
+            if (selectedIndex != -1) {
+                if(!(existe(super.getListaOrden().get(selectedIndex),seleccionados)))
+                {
+                    seleccionados.add(super.getListaOrden().get(selectedIndex));
+                    sumaProbabilidades -= super.getListaOrden().get(selectedIndex).getProbabilidad();
+                }
+            }
+        }
+        /* ANTERIOR FORMA DE ORDEN ALEATORIO
         ArrayList<Caballo> resultado = new ArrayList<>(super.getListaOrden());
         Collections.shuffle(resultado);
 
@@ -28,7 +58,10 @@ public class Trifecta extends Apuesta{
         aux.add(resultado.get(2));
 
         return aux;
+    */
+        return seleccionados;
     }
+
 
     public void desplegarMenu() throws opcionInexistente
     {
@@ -37,8 +70,8 @@ public class Trifecta extends Apuesta{
         super.imprimirLista();
         System.out.println("MOSTRANDO RESULTADOS");
         System.out.println("N1: "+ganadores.get(0).getNombre());
-        System.out.println("N1: "+ganadores.get(1).getNombre());
-        System.out.println("N1: "+ganadores.get(2).getNombre());
+        System.out.println("N2: "+ganadores.get(1).getNombre());
+        System.out.println("N3: "+ganadores.get(2).getNombre());
 
         Saldo cuentaAux = this.getCuentaUser();
         try{

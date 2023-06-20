@@ -19,15 +19,36 @@ public class Imperfecta extends Apuesta{
     @Override
     public ArrayList<Caballo> ordenar()
     {
-        ArrayList<Caballo> resultado = new ArrayList<>(super.getListaOrden());
-        Collections.shuffle(resultado);
+        ArrayList<Caballo> seleccionados = new ArrayList<>();
+        Random random = new Random();
 
-        ArrayList<Caballo> aux = new ArrayList<>();
-        aux.add(resultado.get(0));
-        aux.add(resultado.get(1));
-        aux.add(resultado.get(2));
+        // Calcula la suma total de las probabilidades
+        double sumaProbabilidades = 0.0;
+        for (Caballo objeto : super.getListaOrden()) {
+            sumaProbabilidades += objeto.getProbabilidad();
+        }
 
-        return aux;
+        for (int i = 0; i <= 3; i++) {
+            double r = random.nextDouble() * sumaProbabilidades;
+            double acumulado = 0.0;
+            int selectedIndex = -1;
+            for (int j = 0; j < super.getListaOrden().size(); j++) {
+                Caballo objeto = super.getListaOrden().get(j);
+                acumulado += objeto.getProbabilidad();
+                if (r <= acumulado) {
+                    selectedIndex = j;
+                    break;
+                }
+            }
+            if (selectedIndex != -1) {
+                if(!(existe(super.getListaOrden().get(selectedIndex),seleccionados)))
+                {
+                    seleccionados.add(super.getListaOrden().get(selectedIndex));
+                    sumaProbabilidades -= super.getListaOrden().get(selectedIndex).getProbabilidad();
+                }
+            }
+        }
+        return seleccionados;
     }
 
     public void desplegarMenu() throws opcionInexistente

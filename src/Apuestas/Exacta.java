@@ -10,15 +10,12 @@ import java.util.Scanner;
 import Excepciones.*;
 
 public class Exacta extends Apuesta{
-
     private Caballo ganador;
-
     public Exacta(Saldo saldo)
     {
         super(saldo);
         this.ganador = ordenar().get(0);
     }
-
     @Override
     public ArrayList<Caballo> ordenar()
     {
