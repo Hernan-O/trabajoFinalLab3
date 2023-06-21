@@ -1,10 +1,11 @@
 Lista de objetivos sin utilizar 
-Static: No tenemos a la fecha ninguna implementación
+
 Genericos: No tenemos a la fecha ninguna implementación
 Map: No temenos a la fecha ninguna implementación
 Set: No tenemos a la fecha ninguna implementación
 
 Objetivos utilizados:
+Static: Arreglo/metodo estatico que está en apuesta
 Herencia: Esta implementado en la superclase apuestas y en sus subclases Exacta, imperfecta, etc-
 Polimorfismo: en sus subclases Exacta, imperfecta, etc-
 Casteo: en sus subclases Exacta, imperfecta, etc-
