@@ -28,8 +28,8 @@ public class MenuApuesta {
     }
 
     public void desplegarMenu() {
-        int continuar = 0;
-        while (continuar == 0) {
+        boolean continuar = true;
+        while (continuar) {
             try {
 
                 Scanner in = new Scanner(System.in);
@@ -62,7 +62,7 @@ public class MenuApuesta {
                         break;
                     case 5:
 
-                        continuar =1;
+                        continuar = false;
                         break;
 
                     default:

@@ -41,44 +41,52 @@ public class Exacta extends Apuesta{
     }
     public void desplegarMenu() throws opcionInexistente
     {
-        Scanner in = new Scanner(System.in);
-        super.imprimirListaApuesta();
-        Saldo cuentaAux = this.getCuentaUser();
-        try{
-            System.out.println("Ingrese el caballo ganador");
-            int op = in.nextInt();
-            System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
-            float apuesta = in.nextFloat();
-            if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
-                System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
-                apuesta = 0;
-            }
-            if(op > 10 || op <= 0)
-            {
-              throw new opcionInexistente();
-            }
-            op--;
-            if(super.getListaOrden().get(op).equals(ganador))
-            {
-                System.out.println("GANASTE");
-                cuentaAux.apuestaGanada(apuesta, super.getListaOrden().get(op).getPorcentajeGanancia());
-            }else
-            {
-                System.out.println("Perdiste");
-                cuentaAux.apuestaPerdida(apuesta);
-            }
-            System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
-            super.setCuentaUser(cuentaAux);
-
-        }catch (InputMismatchException e)
-        {
-            System.out.println("Solo numeros");
-        }
-        catch(opcionInexistente e)
-        {
-            System.out.println("Entre 1 y 10");
-        }
-        super.setCuentaUser(cuentaAux);
+           	boolean continuar = true;
+    	while(continuar) {
+	        Scanner in = new Scanner(System.in);
+	        super.imprimirListaApuesta();
+	        Saldo cuentaAux = this.getCuentaUser();
+	        try{
+	            System.out.println("Ingrese el caballo ganador");
+	            int op = in.nextInt();
+	            System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
+	            float apuesta = in.nextFloat();
+	            
+	            if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
+	               System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
+	               apuesta = 0;
+	               throw new SaldoInsuficiente();
+	            }
+	            if(op > 10 || op <= 0)
+	            {
+	              throw new opcionInexistente();
+	            }
+	            op--;
+	            if(super.getListaOrden().get(op).equals(ganador))
+	            {
+	                System.out.println("GANASTE");
+	                cuentaAux.apuestaGanada(apuesta, super.getListaOrden().get(op).getPorcentajeGanancia());
+	            }else
+	            {
+	                System.out.println("Perdiste");
+	                cuentaAux.apuestaPerdida(apuesta);
+	            }
+	            System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
+	            super.setCuentaUser(cuentaAux);
+	            continuar = false;
+	
+	        }catch (InputMismatchException e)
+	        {
+	            System.out.println("Solo numeros");
+	        }
+	        catch(opcionInexistente e)
+	        {
+	            System.out.println("Entre 1 y 10");
+	        } catch (SaldoInsuficiente e) {
+				e.printStackTrace();
+			}
+    	}
+       // super.setCuentaUser(cuentaAux);
     }
 
 

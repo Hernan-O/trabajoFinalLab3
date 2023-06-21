@@ -16,8 +16,8 @@ public class Jugar {
     }
     public void menuJugar() throws InputMismatchException
     {
-        int continuar = 0;
-        while (continuar == 0) {
+        boolean continuar = true;
+        while (continuar) {
             try {
 
                 Scanner in = new Scanner(System.in);

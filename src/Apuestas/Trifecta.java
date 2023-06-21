@@ -1,10 +1,14 @@
 package Apuestas;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+
 import Carreras.Carrera;
 import Entes.Caballo;
+import Excepciones.SaldoInsuficiente;
 import Excepciones.opcionInexistente;
-
-import java.util.*;
 
 public class Trifecta extends Apuesta{
 
@@ -66,66 +70,75 @@ public class Trifecta extends Apuesta{
 
     public void desplegarMenu() throws opcionInexistente
     {
+    	boolean continuar = true;
+ 
         ArrayList<Caballo> resultado=new ArrayList<>();
         Scanner in = new Scanner(System.in);
         super.imprimirListaApuesta();
-        System.out.println("MOSTRANDO RESULTADOS");
-        System.out.println("N1: "+ganadores.get(0).getNombre());
-        System.out.println("N2: "+ganadores.get(1).getNombre());
-        System.out.println("N3: "+ganadores.get(2).getNombre());
 
         Saldo cuentaAux = this.getCuentaUser();
-        try{
-
-            int i=0;
-            while(i!=3)
-            {
-                System.out.println("Ingrese el puesto: "+(i+1));
-                int op = in.nextInt();
-                if(op > 10 || op <= 0)
-                {
-                    throw new opcionInexistente();
-                }
-                if(super.existe(super.getListaOrden().get(op-1),resultado))
-                {
-                    System.out.println("No puede elegir el mismo caballo");
-                    i--;
-                }
-                resultado.add(super.getListaOrden().get(op-1));
-                i++;
-            }
-
-            System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
-            float apuesta = in.nextFloat();
-            if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
-                System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
-                apuesta = 0;
-            }
-
-            if(resultado(resultado))
-            {
-            	float modificarSumadoGanadores = resultado.get(0).getPorcentajeGanancia()+
-            			resultado.get(1).getPorcentajeGanancia() + 
-            			resultado.get(2).getPorcentajeGanancia();
-                System.out.println("GANASTE");
-                cuentaAux.apuestaGanada(apuesta, modificarSumadoGanadores);
-            }else
-            {
-                System.out.println("Perdiste");
-                cuentaAux.apuestaPerdida(apuesta);
-            }
-            System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
-            super.setCuentaUser(cuentaAux);
-
-        }catch (InputMismatchException e)
-        {
-            System.out.println("Solo numeros");
-        }
-        catch(opcionInexistente e)
-        {
-            System.out.println("Entre 1 y 10");
-        }
-        super.setCuentaUser(cuentaAux);
+        
+    	while(continuar) {
+	        try{
+	
+	            int i=0;
+	            while(i!=3)
+	            {
+	                System.out.println("Ingrese el puesto: "+(i+1));
+	                int op = in.nextInt();
+	                if(op > 10 || op <= 0)
+	                {
+	                    throw new opcionInexistente();
+	                }
+	                if(super.existe(super.getListaOrden().get(op-1),resultado))
+	                {
+	                    System.out.println("No puede elegir el mismo caballo");
+	                    i--;
+	                }
+	                resultado.add(super.getListaOrden().get(op-1));
+	                i++;
+	            }
+	
+	            System.out.println("Cuenta actual:"+cuentaAux.getSaldo()+"\nIngrese el monto que quiere apostar:");
+	            float apuesta = in.nextFloat();
+	            if(apuesta > cuentaAux.getSaldo() || apuesta <= 0){
+	                System.out.println("Ingrese minimo 0 y maximo "+ cuentaAux.getSaldo());
+	                apuesta = 0;
+	                throw new SaldoInsuficiente();
+	            }
+	
+	            if(resultado(resultado))
+	            {
+	            	float modificarSumadoGanadores = resultado.get(0).getPorcentajeGanancia()+
+	            			resultado.get(1).getPorcentajeGanancia() + 
+	            			resultado.get(2).getPorcentajeGanancia();
+	                System.out.println("GANASTE");
+	                cuentaAux.apuestaGanada(apuesta, modificarSumadoGanadores);
+	            }else
+	            {
+	                System.out.println("Perdiste");
+	                cuentaAux.apuestaPerdida(apuesta);
+	            }
+	            System.out.println("Monto luego de las apuestas:"+cuentaAux.getSaldo());
+	            super.setCuentaUser(cuentaAux);
+	            continuar = false;
+	            System.out.println("MOSTRANDO RESULTADOS");
+	            System.out.println("N1: "+ganadores.get(0).getNombre());
+	            System.out.println("N2: "+ganadores.get(1).getNombre());
+	            System.out.println("N3: "+ganadores.get(2).getNombre());
+	            
+	        }catch (InputMismatchException e)
+	        {
+	            System.out.println("Solo numeros");
+	        }
+	        catch(opcionInexistente e)
+	        {
+	            System.out.println("Entre 1 y 10");
+	        } catch (SaldoInsuficiente e) {
+				e.printStackTrace();
+			}
+    	}
+        //super.setCuentaUser(cuentaAux);
     }
 
     public boolean resultado(ArrayList<Caballo> resu)
