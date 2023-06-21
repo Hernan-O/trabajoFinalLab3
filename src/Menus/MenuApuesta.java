@@ -2,6 +2,7 @@ package Menus;
 
 import Apuestas.*;
 import Carreras.Carrera;
+import Entes.Caballo;
 import Excepciones.*;
 
 import java.io.*;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class MenuApuesta {
 
     private Carrera tipo;
+    private ArrayList<Caballo> lista;
     private Saldo cuentaUser;   //Arranca con 20k, la idea es que sea un archivito o algo que mantenga persistencia
 
     public MenuApuesta(Carrera dat,Saldo saldo) {
@@ -35,7 +37,8 @@ public class MenuApuesta {
                 System.out.println("1: Exacta");
                 System.out.println("2: Trifecta");
                 System.out.println("3: Imperfecta");
-                System.out.println("4: ATRAS");
+                System.out.println("4: Mostrar estadisticas de Caballos");
+                System.out.println("5: ATRAS");
                 int op = in.nextInt();
 
                 switch (op) {
@@ -54,6 +57,10 @@ public class MenuApuesta {
                         siguiente2.calcularPorcentajeMonto();
                         siguiente2.desplegarMenu();
                     case 4:
+                        imprimirLista();
+                        System.out.println();
+                        break;
+                    case 5:
 
                         continuar =1;
                         break;
@@ -75,5 +82,18 @@ public class MenuApuesta {
 
     }
 
+    public void imprimirLista()
+    {
+        this.lista=Apuesta.archivoBuffer();
+        int i=1;
+        for(Caballo c: this.lista)
+        {
+            System.out.println("----------------------"+ i +"----------------------");
+            System.out.println(c.toString());
+            i++;
+        }
 
-}
+    }
+
+
+    }

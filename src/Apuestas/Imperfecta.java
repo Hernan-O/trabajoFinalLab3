@@ -57,7 +57,7 @@ public class Imperfecta extends Apuesta{
     {
         ArrayList<Caballo> resultado=new ArrayList<>();
         Scanner in = new Scanner(System.in);
-        super.imprimirLista();
+        super.imprimirListaApuesta();
         System.out.println("MOSTRANDO RESULTADOS");
         System.out.println("N1: "+tresPrimeros.get(0).getNombre());
         System.out.println("N2: "+tresPrimeros.get(1).getNombre());

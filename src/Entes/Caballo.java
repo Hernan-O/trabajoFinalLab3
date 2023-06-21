@@ -73,7 +73,8 @@ public class Caballo implements Serializable {
     {
         return  "Nombre: "+ getNombre()+"\n" +
                 "Edad: "+ getEdad()+"\n"+
-                "Raza: "+ getnRaza();
+                "Raza: "+ getnRaza()+"\n"+
+                "Probabilidad: "+ getProbabilidad();
     }
 
     @Override

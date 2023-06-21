@@ -42,7 +42,7 @@ public class Exacta extends Apuesta{
     public void desplegarMenu() throws opcionInexistente
     {
         Scanner in = new Scanner(System.in);
-        super.imprimirLista();
+        super.imprimirListaApuesta();
         Saldo cuentaAux = this.getCuentaUser();
         try{
             System.out.println("Ingrese el caballo ganador");
@@ -80,4 +80,7 @@ public class Exacta extends Apuesta{
         }
         super.setCuentaUser(cuentaAux);
     }
+
+
+
 }

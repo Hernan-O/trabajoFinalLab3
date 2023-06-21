@@ -68,7 +68,7 @@ public class Trifecta extends Apuesta{
     {
         ArrayList<Caballo> resultado=new ArrayList<>();
         Scanner in = new Scanner(System.in);
-        super.imprimirLista();
+        super.imprimirListaApuesta();
         System.out.println("MOSTRANDO RESULTADOS");
         System.out.println("N1: "+ganadores.get(0).getNombre());
         System.out.println("N2: "+ganadores.get(1).getNombre());

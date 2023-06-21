@@ -10,19 +10,20 @@ import java.util.Random;
 
 public abstract class Apuesta implements Apostable {
 
-    private ArrayList<Caballo> listaOrden;
+    public static ArrayList<Caballo> listaOrden;
     private Saldo cuentaUser;
     private Carrera tipo;
 
     public ArrayList<Caballo> getListaOrden() {
         return listaOrden;
     }
+
     public Apuesta(Carrera dat,Saldo saldo) {
         this.tipo = dat;
         this.cuentaUser=saldo;
         this.listaOrden = archivoBuffer();
     }
-    public ArrayList<Caballo> archivoBuffer()
+    public static ArrayList<Caballo> archivoBuffer()
     {
         ArrayList<Caballo> aux= new ArrayList<>();
         try{
@@ -66,17 +67,14 @@ public abstract class Apuesta implements Apostable {
         this.cuentaUser = cuentaUser;
     }
 
-    public void imprimirLista()
+    public void imprimirListaApuesta()
     {
         System.out.println("Lista de caballos");
         int i = 1;
         for(Caballo ca: getListaOrden())
         {
-            System.out.println(i + ":" +ca.toString());
-            System.out.println("Prob Victoria: "+ ca.getProbabilidad());
-            System.out.println("Monto de apuestas acumulado: "+ ca.getMontoAcumuladoApuestas());
-            System.out.println("Modificador apuesta: "+ ca.getPorcentajeGanancia()+"\n");
-            
+            System.out.println("----------------------"+ i +"----------------------");
+            System.out.println(ca.getNombre());
             i++;
         }
     }
@@ -115,5 +113,4 @@ public abstract class Apuesta implements Apostable {
         }
         return false;
     }
-
 }
