@@ -11,10 +11,41 @@ public class Caballo implements Serializable {
     private float probabilidad;
     private float montoAcumuladoApuestas;
     private float porcentajeGanancia;
-    
-    
+    private float peso;
+    private int altura;
+    //Constructor
+    public Caballo(String nombre, int edad, int opc)
+    {
+        Caballo.Raza[] opciones = Caballo.Raza.values();
+        this.nRaza= opciones[opc].toString();
+        this.nombre=nombre;
+        this.edad=edad;
+        this.altura = new Random().nextInt(187 - 147 + 1) + 147;
+        this.peso = 409 + new Random().nextFloat() * (522 - 409);
+        this.probabilidad = calculaProbabilidad();
+         
+        
+    }
+    //Gets & sets
+
     public float getPorcentajeGanancia() {
 		return porcentajeGanancia;
+	}
+
+	public float getPeso() {
+		return peso;
+	}
+
+	public void setPeso(float peso) {
+		this.peso = peso;
+	}
+
+	public int getAltura() {
+		return altura;
+	}
+
+	public void setAltura(int altura) {
+		this.altura = altura;
 	}
 
 	public void setPorcentajeGanancia(float porcentajeGanancia) {
@@ -47,16 +78,6 @@ public class Caballo implements Serializable {
         return nRaza;
     }
 
-    public Caballo(String nombre, int edad, int opc)
-    {
-        Caballo.Raza[] opciones = Caballo.Raza.values();
-        this.nRaza= opciones[opc].toString();
-        this.nombre=nombre;
-        this.edad=edad;
-        this.probabilidad = new Random().nextFloat()*100+1;
-        
-    }
-
     public void setProbabilidad(float probabilidad) {
         this.probabilidad = probabilidad;
     }
@@ -67,13 +88,22 @@ public class Caballo implements Serializable {
         AMERICANO,
         ARABE;
     }
-
+    
+    
+    public float calculaProbabilidad()
+    {
+    	float probabilidad = new Random().nextFloat()*100+1;
+    	return probabilidad;
+    }
+    //Metodos
     @Override
     public String toString()
     {
         return  "Nombre: "+ getNombre()+"\n" +
                 "Edad: "+ getEdad()+"\n"+
                 "Raza: "+ getnRaza()+"\n"+
+                "Altura: "+ getAltura()+"\n"+
+                "Peso: "+ getPeso()+"\n"+
                 "Probabilidad: "+ getProbabilidad();
     }
 

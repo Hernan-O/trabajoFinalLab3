@@ -14,18 +14,36 @@ public abstract class Apuesta implements Apostable {
     public static ListaGenerica<Caballo> listaOrden;
     private Saldo cuentaUser;
     private Carrera tipo;
-
-    public ListaGenerica<Caballo> getListaOrden() {
-        return listaOrden;
-    }
-
+    
+    //Constructor
     public Apuesta(Carrera dat,Saldo saldo) {
         this.tipo = dat;
         this.cuentaUser=saldo;
         this.listaOrden = archivoBuffer();
     }
     
+    //Getters & Setters
+    public ListaGenerica<Caballo> getListaOrden() {
+        return listaOrden;
+    }
+
+    public Carrera getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Carrera tipo) {
+        this.tipo = tipo;
+    }
+
+    public Saldo getCuentaUser() {
+        return cuentaUser; 
+    }
+
+    public void setCuentaUser(Saldo cuentaUser) {
+        this.cuentaUser = cuentaUser;
+    }
     
+    //Lee el archivo de caballos en una lista generica y lo devuelve
 	@SuppressWarnings("unchecked")
 	public static ListaGenerica<Caballo> archivoBuffer() {
         ListaGenerica<Caballo> aux = new ListaGenerica<>();
@@ -44,23 +62,8 @@ public abstract class Apuesta implements Apostable {
         }
         return aux;
     }
-
-    public Carrera getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Carrera tipo) {
-        this.tipo = tipo;
-    }
-
-    public Saldo getCuentaUser() {
-        return cuentaUser; 
-    }
-
-    public void setCuentaUser(Saldo cuentaUser) {
-        this.cuentaUser = cuentaUser;
-    }
-
+	
+	//Recorre la lista de caballos e imprime el nombre
     public void imprimirListaApuesta()
     {
         System.out.println("Lista de caballos");
@@ -69,10 +72,13 @@ public abstract class Apuesta implements Apostable {
         {
             System.out.println("----------------------"+ i +"----------------------");
             System.out.println(ca.getNombre());
+            System.out.println("Modificador" + ca.getPorcentajeGanancia());
+            System.out.println("Probabilidad" + ca.getProbabilidad());
             i++;
         }
     }
     
+    //Asigna un valor random al monto acumulado y calcula que porcentaje del total de lo apostado es
     public void calcularPorcentajeMonto()
     {
     	float suma=0;
@@ -92,10 +98,9 @@ public abstract class Apuesta implements Apostable {
 
     	}
     	 System.out.println("Total: "+suma);
-    	
     }
     
-    
+    //Chequea si existe un caballo especifico en la lista
     public boolean existe(Caballo ente,ListaGenerica<Caballo> datos)
     {
         for(Caballo c:datos)

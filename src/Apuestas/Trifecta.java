@@ -15,14 +15,14 @@ import Excepciones.opcionInexistente;
 public class Trifecta extends Apuesta implements Serializable{
 
     private ListaGenerica<Caballo> ganadores;
-
+    //Constructor
     public Trifecta(Carrera dat,Saldo saldo)
     {
         super(dat,saldo);
         this.ganadores=ordenar();
         this.ganadores = this.getTipo().cambiaProb(this.ganadores);
     }
-
+    
     @Override
     public ListaGenerica<Caballo> ordenar()
     {
@@ -69,7 +69,7 @@ public class Trifecta extends Apuesta implements Serializable{
         return seleccionados;
     }
 
-
+    //Despliega el menu para que el usuario pueda seleccionar los caballos ganadores
     public void desplegarMenu() throws opcionInexistente
     {
     	boolean continuar = true;
@@ -142,7 +142,7 @@ public class Trifecta extends Apuesta implements Serializable{
     	}
         //super.setCuentaUser(cuentaAux);
     }
-
+    //Chequea si los caballos elegidos por el usuario se corresponden con los ganadores de la carrera
     public boolean resultado(ListaGenerica<Caballo> resu)
     {
         int i=0;

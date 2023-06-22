@@ -9,9 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ListaGenerica<T> implements Iterable<T>, Serializable{
-    /**
-	 * 
-	 */
+   
 	private static final long serialVersionUID = -7058970356820460117L;
 	private List<T> elementos;
 
@@ -59,7 +57,6 @@ public class ListaGenerica<T> implements Iterable<T>, Serializable{
         elementos = (List<T>) in.readObject();
     }
     
-
     @Override
     public Iterator<T> iterator() {
         return elementos.iterator();

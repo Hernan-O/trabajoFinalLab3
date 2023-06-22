@@ -13,14 +13,14 @@ public class Imperfecta extends Apuesta{
 
     private ListaGenerica<Caballo> tresPrimeros;
 
-
+    //Constructor
     public Imperfecta(Carrera dat, Saldo saldo)
     {
         super(dat,saldo);
         this.tresPrimeros=ordenar();
         this.tresPrimeros = this.getTipo().cambiaProb(this.tresPrimeros);
     }
-
+    //Asigna probabilidades de victoria y ordena el arreglo
     @Override
     public ListaGenerica<Caballo> ordenar()
     {
@@ -55,7 +55,7 @@ public class Imperfecta extends Apuesta{
         }
         return seleccionados;
     }
-
+    //Despliega el menu por consola para realizar la apuesta
     public void desplegarMenu() throws opcionInexistente
     {
     	boolean continuar = true;
@@ -132,7 +132,7 @@ public class Imperfecta extends Apuesta{
         }
         //super.setCuentaUser(cuentaAux);
     }
-
+    //Chequea si existe el caballo seleccionado en la lista de caballos
     public boolean resultado(ListaGenerica<Caballo> resultado,ListaGenerica<Caballo> intento)
     {
         for(Caballo c:intento)

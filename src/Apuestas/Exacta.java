@@ -14,11 +14,14 @@ import Excepciones.*;
 
 public class Exacta extends Apuesta{
     private Caballo ganador;
+    
+    //Constructor
     public Exacta(Carrera dat, Saldo saldo)
     {
         super(dat,saldo);
         this.ganador = ordenar().get(0);
     }
+    //Ordena los caballos por orden de llegada, aplica modificadores segun tipo de carrera y raza del caballo
     @Override
     public ListaGenerica<Caballo> ordenar()
     {
@@ -37,16 +40,15 @@ public class Exacta extends Apuesta{
         }
         return resultado;
     }
-
-    public Saldo devolverTotal(){
-        return this.getCuentaUser();
-    }
+    
+    //Despliega el menu por consola para realizar la apuesta
     public void desplegarMenu() throws opcionInexistente
     {
            	boolean continuar = true;
     	while(continuar) {
 	        Scanner in = new Scanner(System.in);
 	        super.imprimirListaApuesta();
+	        
 	        Saldo cuentaAux = this.getCuentaUser();
 	        try{
 	            System.out.println("Ingrese el caballo ganador");

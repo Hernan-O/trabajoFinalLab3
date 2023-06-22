@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Main implements Serializable{
     public static void main(String[] args) {
-
+    	//LLamado y apertura del menu principal
     	Jugar juego = new Jugar();
 
         // INSTANCIAS Y CREACION DEL ARCHIVO.
@@ -26,7 +26,6 @@ public class Main implements Serializable{
         Caballo caballo8 = new Caballo(nombres[7], 4, 1);
         Caballo caballo9 = new Caballo(nombres[8], 5, 2);
         Caballo caballo10 = new Caballo(nombres[9], 3, 0);
-
 
         ListaGenerica<Caballo> lista = new ListaGenerica<>();
         lista.agregar(caballo1);
