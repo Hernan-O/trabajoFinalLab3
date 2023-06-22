@@ -82,6 +82,7 @@ public class MenuCarrera {
     public void desplegarMenu()
     {
         boolean continuar = true;
+        Estetica screenCleaner = new Estetica();
         while (continuar) {
             try {
 
@@ -107,6 +108,7 @@ public class MenuCarrera {
                     case 4:
                         bufferArchivoSaldo();
                         continuar= false;
+                        screenCleaner.limpiaPantalla();
                         break;
 
                     default:

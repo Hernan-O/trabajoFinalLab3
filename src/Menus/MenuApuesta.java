@@ -30,6 +30,7 @@ public class MenuApuesta {
 
     public void desplegarMenu() {
         boolean continuar = true;
+        Estetica screenCleaner = new Estetica();
         while (continuar) {
             try {
 
@@ -63,7 +64,7 @@ public class MenuApuesta {
                         System.out.println();
                         break;
                     case 5:
-
+                        screenCleaner.limpiaPantalla();
                         continuar = false;
                         break;
 
