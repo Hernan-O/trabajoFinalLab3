@@ -4,6 +4,7 @@ import Apuestas.*;
 import Carreras.Carrera;
 import Entes.Caballo;
 import Excepciones.*;
+import genericos.ListaGenerica;
 
 import java.io.*;
 import java.lang.reflect.Array;
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class MenuApuesta {
 
     private Carrera tipo;
-    private ArrayList<Caballo> lista;
+    private ListaGenerica<Caballo> lista;
     private Saldo cuentaUser;   //Arranca con 20k, la idea es que sea un archivito o algo que mantenga persistencia
 
     public MenuApuesta(Carrera dat,Saldo saldo) {
@@ -56,6 +57,7 @@ public class MenuApuesta {
                         Imperfecta siguiente2 = new Imperfecta(tipo,getCuentaUser());
                         siguiente2.calcularPorcentajeMonto();
                         siguiente2.desplegarMenu();
+                        break;
                     case 4:
                         imprimirLista();
                         System.out.println();

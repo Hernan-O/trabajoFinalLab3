@@ -1,54 +1,58 @@
 package Apuestas;
 
+import java.io.IOException;
+import java.util.Random;
+
+import Archivos.Leer;
 import Carreras.Carrera;
 import Entes.Caballo;
+import Entes.Jockey;
 import Interfaces.Apostable;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
+import genericos.ListaGenerica;
 
 public abstract class Apuesta implements Apostable {
 
-    public static ArrayList<Caballo> listaOrden;
+    public static ListaGenerica<Caballo> listaOrden;
+    private ListaGenerica<Jockey> listaJockey;
     private Saldo cuentaUser;
     private Carrera tipo;
 
-    public ArrayList<Caballo> getListaOrden() {
+    public ListaGenerica<Caballo> getListaOrden() {
         return listaOrden;
     }
 
     public Apuesta(Carrera dat,Saldo saldo) {
         this.tipo = dat;
         this.cuentaUser=saldo;
-        this.listaOrden = archivoBuffer();
+        Apuesta.listaOrden = archivoBuffer();
+        cargarArrayDeJockey();
     }
-    public static ArrayList<Caballo> archivoBuffer()
-    {
-        ArrayList<Caballo> aux= new ArrayList<>();
-        try{
-            File archivo = new File("caballos.txt");
-
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo));
-
-            ArrayList<Caballo> lista = (ArrayList<Caballo>) in.readObject();
-
-            aux= lista;
-            in.close();
-
-
-        }catch (ClassNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
+    
+ 
+	@SuppressWarnings("unchecked")
+	public static ListaGenerica<Caballo> archivoBuffer() {
+    	ListaGenerica<Caballo> aux= new ListaGenerica<Caballo>();
+        Leer<Object> leer = new Leer<Object>();
+        try {
+			leer.abrir("caballos");
+			aux = (ListaGenerica<Caballo>) leer.leer();
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
         return aux;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public void cargarArrayDeJockey() {
+    	Leer<Object> leer = new Leer<Object>();
+    	try {
+			leer.abrir("jockey");
+			listaJockey = (ListaGenerica<Jockey>) leer.leer();
+			//System.out.println(listaJockey.listaEntera()); //Para que toto vea que si funciona. "borrar comentario"
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    	
     }
 
     public Carrera getTipo() {
@@ -102,9 +106,9 @@ public abstract class Apuesta implements Apostable {
     }
     
     
-    public boolean existe(Caballo ente,ArrayList<Caballo> datos)
+    public boolean existe(Caballo ente,ListaGenerica<Caballo> tresPrimeros2)
     {
-        for(Caballo c:datos)
+        for(Caballo c:tresPrimeros2)
         {
             if(c.equals(ente))
             {

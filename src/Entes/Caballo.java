@@ -1,11 +1,15 @@
 package Entes;
 import java.io.Serializable;
 import java.util.Random;
-import Carreras.Carrera;
 
 public class Caballo implements Serializable {
 
-    private int edad;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3765160581934983034L;
+	
+	private int edad;
     private String nombre;
     private String nRaza;
     private float probabilidad;

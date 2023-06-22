@@ -1,19 +1,22 @@
 package main;
 
 import Apuestas.Saldo;
+import Archivos.Escribir;
 import Menus.Jugar;
+import genericos.ListaGenerica;
 import Entes.*;
 
 import java.io.*;
-import java.util.ArrayList;
+
 
 public class Main {
-    public static void main(String[] args) {
+    @SuppressWarnings("unused")
+	public static void main(String[] args) {
 
-       Jugar juego = new Jugar();
+       //Jugar juego = new Jugar();
 
         // INSTANCIAS Y CREACION DEL ARCHIVO.
-/*
+
         String[] nombres = {"Trotrón", "Relámpago", "Viento Veloz", "Galope Brillante", "Centella", "Rayo Dorado", "Fuego Salvaje", "Mariposa Veloz", "Estrella Fulgurante", "Tormenta Cautivadora"};
 
         Caballo caballo1 = new Caballo(nombres[0], 3, 0);
@@ -28,52 +31,61 @@ public class Main {
         Caballo caballo10 = new Caballo(nombres[9], 3, 0);
 
 
-        ArrayList<Caballo> lista = new ArrayList<>();
-        lista.add(caballo1);
-        lista.add(caballo2);
-        lista.add(caballo3);
-        lista.add(caballo4);
-        lista.add(caballo5);
-        lista.add(caballo6);
-        lista.add(caballo7);
-        lista.add(caballo8);
-        lista.add(caballo9);
-        lista.add(caballo10);
+        ListaGenerica<Caballo> lista = new ListaGenerica<Caballo>();
+        lista.agregar(caballo1);
+        lista.agregar(caballo2);
+        lista.agregar(caballo3);
+        lista.agregar(caballo4);
+        lista.agregar(caballo5);
+        lista.agregar(caballo6);
+        lista.agregar(caballo7);
+        lista.agregar(caballo8);
+        lista.agregar(caballo9);
+        lista.agregar(caballo10);
 
-        try{
-            File archivo = new File("caballos.txt");
-            ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
-
-            obj.writeObject(lista);
-
-            obj.close();
-
-        }catch (FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }catch (IOException e){
-
-            System.out.println(e.getMessage());
-        }
+ 
+        Escribir escribir = new Escribir();
+        
+        try {
+			escribir.abrir("caballos");
+			escribir.escribir(lista);
+	        escribir.cerrar();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}            
 
         Saldo saldito = new Saldo();
 
-        try{
-            File archivo = new File("saldo.txt");
-            ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
-
-            obj.writeObject(saldito);
-
-            obj.close();
-
-        }catch (FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }catch (IOException e){
-
-            System.out.println(e.getMessage());
-        }
-*/
+        try {
+			escribir.abrir("saldo");
+			escribir.escribir(saldito);
+	        escribir.cerrar();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+        
+        
+        ListaGenerica<Jockey> listaJ = new ListaGenerica<Jockey>();
+        listaJ.agregar(new Jockey("Guillermo Gimenez", 78));
+        listaJ.agregar(new Jockey("Leo Messirve", 80));
+        listaJ.agregar(new Jockey("Sergio Busquets", 90));
+        listaJ.agregar(new Jockey("Juan Manuel Belgrano", 75));
+        listaJ.agregar(new Jockey("San Martin", 83));
+        listaJ.agregar(new Jockey("El maestro Yoda", 25.2F));
+        listaJ.agregar(new Jockey("Senador Palpatin(Con poder ilimitado)", 78.6F));
+        listaJ.agregar(new Jockey("Mario Santos", 92.4F));
+        listaJ.agregar(new Jockey("Luigi", 91.8F));
+        listaJ.agregar(new Jockey("Emilio Ravenna", 85.1F));
+        
+        try {
+			escribir.abrir("jockey");
+			escribir.escribir(listaJ);
+	        escribir.cerrar();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
 
     }
 }

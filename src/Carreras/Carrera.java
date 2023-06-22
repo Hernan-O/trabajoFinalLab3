@@ -1,10 +1,8 @@
 package Carreras;
 
 import Entes.Caballo;
+import genericos.ListaGenerica;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Carrera {
 
@@ -21,32 +19,32 @@ public class Carrera {
         this.nombre = opciones[opc].toString();
     }
 
-    public ArrayList cambiaProb(ArrayList<Caballo> dat) {
+    public ListaGenerica<Caballo> cambiaProb(ListaGenerica<Caballo> aux) {
         switch (this.nombre) {
             case "CAMPO_TRAVIESA" -> {
-                dat = recorreYCambia(dat, "AMERICANO", 10);
-                dat = recorreYCambia(dat, "ARABE", 5);
+                aux = recorreYCambia(aux, "AMERICANO", 10);
+                aux = recorreYCambia(aux, "ARABE", 5);
             }
             case "LISA" -> {
-                dat = recorreYCambia(dat, "ARABE", 10);
-                dat = recorreYCambia(dat, "ANGLO", 5);
+                aux = recorreYCambia(aux, "ARABE", 10);
+                aux = recorreYCambia(aux, "ANGLO", 5);
             }
             case "OBSTACULOS" -> {
-                dat = recorreYCambia(dat, "ANGLO", 10);
-                dat = recorreYCambia(dat, "AMERICANO", 5);
+                aux = recorreYCambia(aux, "ANGLO", 10);
+                aux = recorreYCambia(aux, "AMERICANO", 5);
             }
         }
-        return dat;
+        return aux;
     }
 
-    public ArrayList recorreYCambia(ArrayList<Caballo> dat, String raza, int buff) {
-        for (Caballo ca : dat) {
+    public ListaGenerica<Caballo> recorreYCambia(ListaGenerica<Caballo> aux, String raza, int buff) {
+        for (Caballo ca : aux) {
             if (ca.getnRaza().equalsIgnoreCase(raza) && (ca.getProbabilidad() + buff) <= 100) {
                 ca.setProbabilidad(ca.getProbabilidad() + buff);
             } else if (ca.getnRaza().equalsIgnoreCase(raza) && (ca.getProbabilidad() + buff) <= 100) {
                 ca.setProbabilidad(100);
             }
         }
-        return dat;
+        return aux;
     }
 }

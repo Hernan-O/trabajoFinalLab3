@@ -1,12 +1,15 @@
 package Menus;
 
-import Apuestas.Saldo;
-import Carreras.Carrera;
-
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import Apuestas.Saldo;
+import Archivos.Escribir;
+import Archivos.Leer;
+import Carreras.Carrera;
 
 public class MenuCarrera {
 
@@ -35,47 +38,30 @@ public class MenuCarrera {
     public Saldo archivoBufferSaldo()
     {
         Saldo saldo= new Saldo();
-        try{
-            File archivo = new File("saldo.txt");
-
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo));
-
-            saldo = (Saldo)in.readObject();
-            in.close();
-
-        }catch (ClassNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
+        Leer<Object> leer = new Leer<Object>();
+        
+        try {
+			leer.abrir("saldo");
+	        saldo = (Saldo) leer.leer();
+	        leer.cerrar();
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        
         return saldo;
     }
 
     public void bufferArchivoSaldo()
     {
-        try{
-            File archivo = new File("saldo.txt");
-
-            ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
-
-            obj.writeObject(getCuentaUser());
-
-            obj.close();
-
-        }
-        catch(FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
+           Escribir escribir = new Escribir();
+           try {
+			escribir.abrir("saldo");
+			escribir.escribir(getCuentaUser());
+	        escribir.cerrar();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+           
     }
 
     public ArrayList<Carrera> crearCarreras()

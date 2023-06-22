@@ -4,12 +4,13 @@ import Carreras.Carrera;
 import Entes.Caballo;
 import Excepciones.SaldoInsuficiente;
 import Excepciones.opcionInexistente;
+import genericos.ListaGenerica;
 
 import java.util.*;
 
 public class Imperfecta extends Apuesta{
 
-    private ArrayList<Caballo> tresPrimeros;
+    private ListaGenerica<Caballo> tresPrimeros;
 
 
     public Imperfecta(Carrera dat, Saldo saldo)
@@ -20,9 +21,9 @@ public class Imperfecta extends Apuesta{
     }
 
     @Override
-    public ArrayList<Caballo> ordenar()
+    public ListaGenerica<Caballo> ordenar()
     {
-        ArrayList<Caballo> seleccionados = new ArrayList<>();
+        ListaGenerica<Caballo> seleccionados = new ListaGenerica<Caballo>();
         Random random = new Random();
 
         // Calcula la suma total de las probabilidades
@@ -46,7 +47,7 @@ public class Imperfecta extends Apuesta{
             if (selectedIndex != -1) {
                 if(!(existe(super.getListaOrden().get(selectedIndex),seleccionados)))
                 {
-                    seleccionados.add(super.getListaOrden().get(selectedIndex));
+                    seleccionados.agregar(super.getListaOrden().get(selectedIndex));
                     sumaProbabilidades -= super.getListaOrden().get(selectedIndex).getProbabilidad();
                 }
             }
@@ -57,7 +58,7 @@ public class Imperfecta extends Apuesta{
     public void desplegarMenu() throws opcionInexistente
     {
     	boolean continuar = true;
-        ArrayList<Caballo> resultado=new ArrayList<>();
+        ListaGenerica<Caballo> resultado=new ListaGenerica<Caballo>();
         Scanner in = new Scanner(System.in);
         super.imprimirListaApuesta();
 
@@ -79,7 +80,7 @@ public class Imperfecta extends Apuesta{
 	                    System.out.println("No puede elegir el mismo caballo");
 	                    i--;
 	                }
-	                resultado.add(super.getListaOrden().get(op-1));
+	                resultado.agregar(super.getListaOrden().get(op-1));
 	                i++;
 	            }
 	
@@ -131,11 +132,11 @@ public class Imperfecta extends Apuesta{
         //super.setCuentaUser(cuentaAux);
     }
 
-    public boolean resultado(ArrayList<Caballo> resultado,ArrayList<Caballo> intento)
+    public boolean resultado(ListaGenerica<Caballo> tresPrimeros2,ListaGenerica<Caballo> resultado)
     {
-        for(Caballo c:intento)
+        for(Caballo c:resultado)
         {
-            if(!(existe(c,resultado)))
+            if(!(existe(c,tresPrimeros2)))
             {
                 return false;
             }
