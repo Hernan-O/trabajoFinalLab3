@@ -1,10 +1,9 @@
 Lista de objetivos sin utilizar 
-
-Genericos: No tenemos a la fecha ninguna implementación
 Map: No temenos a la fecha ninguna implementación
 Set: No tenemos a la fecha ninguna implementación
 
 Objetivos utilizados:
+Genericos: Los caballos y jockeys están manejados por una ListaGenerica
 Static: Arreglo/metodo estatico que está en apuesta
 Herencia: Esta implementado en la superclase apuestas y en sus subclases Exacta, imperfecta, etc-
 Polimorfismo: en sus subclases Exacta, imperfecta, etc-
