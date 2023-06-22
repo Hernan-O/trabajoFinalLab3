@@ -42,7 +42,7 @@ public class MenuApuesta {
                 System.out.println("4: Mostrar estadisticas de Caballos");
                 System.out.println("5: ATRAS");
                 int op = in.nextInt();
-
+                screenCleaner.limpiaPantalla();
                 switch (op) {
                     case 1:
                         Exacta siguiente0 = new Exacta(tipo,getCuentaUser());

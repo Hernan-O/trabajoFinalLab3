@@ -48,7 +48,6 @@ public abstract class Apuesta implements Apostable {
     	try {
 			leer.abrir("jockey");
 			listaJockey = (ListaGenerica<Jockey>) leer.leer();
-			//System.out.println(listaJockey.listaEntera()); //Para que toto vea que si funciona. "borrar comentario"
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

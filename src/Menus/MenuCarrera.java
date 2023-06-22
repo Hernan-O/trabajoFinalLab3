@@ -92,8 +92,8 @@ public class MenuCarrera {
                 System.out.println("2: Obstaculos");
                 System.out.println("3: Lisa");
                 System.out.println("4: Atras");
-
                 int op = in.nextInt();
+                screenCleaner.limpiaPantalla();
                 in.nextLine();
                 switch (op) {
                     case 1:

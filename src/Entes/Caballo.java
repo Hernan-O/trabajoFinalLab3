@@ -15,6 +15,7 @@ public class Caballo implements Serializable {
     private float probabilidad;
     private float montoAcumuladoApuestas;
     private float porcentajeGanancia;
+    private Jockey piloto;
     
     
     public float getPorcentajeGanancia() {
@@ -51,6 +52,14 @@ public class Caballo implements Serializable {
         return nRaza;
     }
 
+    public Jockey getPiloto() {
+        return piloto;
+    }
+
+    public void setPiloto(Jockey piloto) {
+        this.piloto = piloto;
+    }
+
     public Caballo(String nombre, int edad, int opc)
     {
         Caballo.Raza[] opciones = Caballo.Raza.values();
@@ -78,7 +87,8 @@ public class Caballo implements Serializable {
         return  "Nombre: "+ getNombre()+"\n" +
                 "Edad: "+ getEdad()+"\n"+
                 "Raza: "+ getnRaza()+"\n"+
-                "Probabilidad: "+ getProbabilidad();
+                "Probabilidad: "+ getProbabilidad()+
+                "Nombre del jockey: "+ getPiloto().getNombre();
     }
 
     @Override

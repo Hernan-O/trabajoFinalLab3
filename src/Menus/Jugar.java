@@ -1,7 +1,9 @@
 package Menus;
+import Archivos.Escribir;
 import Entes.*;
 import Apuestas.*;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +25,8 @@ public class Jugar {
                 Scanner in = new Scanner(System.in);
                 System.out.println("Ingrese opcion:");
                 System.out.println("1: JUGAR");
-                System.out.println("2: SALIR");
+                System.out.println("2: CARGAR SALDO");
+                System.out.println("3: SALIR");
 
                 int op = in.nextInt();
                 in.nextLine();
@@ -32,6 +35,9 @@ public class Jugar {
                         MenuCarrera siguiente = new MenuCarrera();
                         break;
                     case 2:
+                        cargarSaldo();
+                        break;
+                    case 3:
                         System.out.println("Fin juego");
                         System.exit(0);
                         break;
@@ -47,13 +53,18 @@ public class Jugar {
                 System.out.println("Ingrese una opcion correcta");
             }
         }
-
-
-
     }
-
-
-
-
-
+    public void cargarSaldo(){
+        Scanner in = new Scanner(System.in);
+        Escribir escribir = new Escribir();
+        System.out.println("Ingrese el monto");
+        Saldo saldito = new Saldo(in.nextInt());
+        try {
+            escribir.abrir("saldo");
+            escribir.escribir(saldito);
+            escribir.cerrar();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
