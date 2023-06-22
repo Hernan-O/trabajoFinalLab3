@@ -1,7 +1,3 @@
-Lista de objetivos sin utilizar 
-Map: No temenos a la fecha ninguna implementación
-Set: No tenemos a la fecha ninguna implementación
-
 Objetivos utilizados:
 Genericos: Los caballos y jockeys están manejados por una ListaGenerica
 Static: Arreglo/metodo estatico que está en apuesta
