@@ -4,11 +4,11 @@ import Apuestas.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Jugar {
+public class Jugar implements Serializable{
 
     public Jugar(){
 

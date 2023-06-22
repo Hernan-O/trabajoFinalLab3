@@ -3,6 +3,7 @@ package Menus;
 import Apuestas.*;
 import Carreras.Carrera;
 import Entes.Caballo;
+import Entes.ListaGenerica;
 import Excepciones.*;
 
 import java.io.*;
@@ -11,10 +12,10 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MenuApuesta {
+public class MenuApuesta implements Serializable{
 
     private Carrera tipo;
-    private ArrayList<Caballo> lista;
+    private ListaGenerica<Caballo> lista;
     private Saldo cuentaUser;   //Arranca con 20k, la idea es que sea un archivito o algo que mantenga persistencia
 
     public MenuApuesta(Carrera dat,Saldo saldo) {

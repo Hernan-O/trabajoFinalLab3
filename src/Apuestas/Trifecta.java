@@ -1,5 +1,6 @@
 package Apuestas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -7,12 +8,13 @@ import java.util.Scanner;
 
 import Carreras.Carrera;
 import Entes.Caballo;
+import Entes.ListaGenerica;
 import Excepciones.SaldoInsuficiente;
 import Excepciones.opcionInexistente;
 
-public class Trifecta extends Apuesta{
+public class Trifecta extends Apuesta implements Serializable{
 
-    private ArrayList<Caballo> ganadores;
+    private ListaGenerica<Caballo> ganadores;
 
     public Trifecta(Carrera dat,Saldo saldo)
     {
@@ -22,9 +24,9 @@ public class Trifecta extends Apuesta{
     }
 
     @Override
-    public ArrayList<Caballo> ordenar()
+    public ListaGenerica<Caballo> ordenar()
     {
-        ArrayList<Caballo> seleccionados = new ArrayList<>();
+    	ListaGenerica<Caballo> seleccionados = new ListaGenerica<>();
         Random random = new Random();
 
         // Calcula la suma total de las probabilidades
@@ -48,7 +50,7 @@ public class Trifecta extends Apuesta{
             if (selectedIndex != -1) {
                 if(!(existe(super.getListaOrden().get(selectedIndex),seleccionados)))
                 {
-                    seleccionados.add(super.getListaOrden().get(selectedIndex));
+                    seleccionados.agregar(super.getListaOrden().get(selectedIndex));
                     sumaProbabilidades -= super.getListaOrden().get(selectedIndex).getProbabilidad();
                 }
             }
@@ -72,7 +74,7 @@ public class Trifecta extends Apuesta{
     {
     	boolean continuar = true;
  
-        ArrayList<Caballo> resultado=new ArrayList<>();
+    	ListaGenerica<Caballo> resultado=new ListaGenerica<>();
         Scanner in = new Scanner(System.in);
         super.imprimirListaApuesta();
 
@@ -95,7 +97,7 @@ public class Trifecta extends Apuesta{
 	                    System.out.println("No puede elegir el mismo caballo");
 	                    i--;
 	                }
-	                resultado.add(super.getListaOrden().get(op-1));
+	                resultado.agregar(super.getListaOrden().get(op-1));
 	                i++;
 	            }
 	
@@ -141,7 +143,7 @@ public class Trifecta extends Apuesta{
         //super.setCuentaUser(cuentaAux);
     }
 
-    public boolean resultado(ArrayList<Caballo> resu)
+    public boolean resultado(ListaGenerica<Caballo> resu)
     {
         int i=0;
         for(Caballo c:resu)

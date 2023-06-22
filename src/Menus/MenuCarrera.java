@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MenuCarrera {
+public class MenuCarrera implements Serializable{
 
     private Saldo cuentaUser;
     private ArrayList<Carrera> carreras;

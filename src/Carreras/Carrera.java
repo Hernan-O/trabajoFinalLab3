@@ -1,12 +1,14 @@
 package Carreras;
 
 import Entes.Caballo;
+import Entes.ListaGenerica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Carrera {
+public class Carrera implements Serializable{
 
     private String nombre;
 
@@ -21,7 +23,7 @@ public class Carrera {
         this.nombre = opciones[opc].toString();
     }
 
-    public ArrayList cambiaProb(ArrayList<Caballo> dat) {
+    public ListaGenerica cambiaProb(ListaGenerica<Caballo> dat) {
         switch (this.nombre) {
             case "CAMPO_TRAVIESA" -> {
                 dat = recorreYCambia(dat, "AMERICANO", 10);
@@ -39,7 +41,7 @@ public class Carrera {
         return dat;
     }
 
-    public ArrayList recorreYCambia(ArrayList<Caballo> dat, String raza, int buff) {
+    public ListaGenerica recorreYCambia(ListaGenerica<Caballo> dat, String raza, int buff) {
         for (Caballo ca : dat) {
             if (ca.getnRaza().equalsIgnoreCase(raza) && (ca.getProbabilidad() + buff) <= 100) {
                 ca.setProbabilidad(ca.getProbabilidad() + buff);

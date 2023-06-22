@@ -1,9 +1,10 @@
 package Excepciones;
+import java.io.Serializable;
 import java.lang.Exception;
 
 import Apuestas.Apuesta;
 
-public class SaldoInsuficiente extends Exception{
+public class SaldoInsuficiente extends Exception implements Serializable{
 
     public SaldoInsuficiente()
     {

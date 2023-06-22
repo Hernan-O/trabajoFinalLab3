@@ -7,13 +7,13 @@ import Entes.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Main {
+public class Main implements Serializable{
     public static void main(String[] args) {
 
-       Jugar juego = new Jugar();
+    	Jugar juego = new Jugar();
 
         // INSTANCIAS Y CREACION DEL ARCHIVO.
-/*
+    	/*
         String[] nombres = {"Trotrón", "Relámpago", "Viento Veloz", "Galope Brillante", "Centella", "Rayo Dorado", "Fuego Salvaje", "Mariposa Veloz", "Estrella Fulgurante", "Tormenta Cautivadora"};
 
         Caballo caballo1 = new Caballo(nombres[0], 3, 0);
@@ -28,31 +28,30 @@ public class Main {
         Caballo caballo10 = new Caballo(nombres[9], 3, 0);
 
 
-        ArrayList<Caballo> lista = new ArrayList<>();
-        lista.add(caballo1);
-        lista.add(caballo2);
-        lista.add(caballo3);
-        lista.add(caballo4);
-        lista.add(caballo5);
-        lista.add(caballo6);
-        lista.add(caballo7);
-        lista.add(caballo8);
-        lista.add(caballo9);
-        lista.add(caballo10);
+        ListaGenerica<Caballo> lista = new ListaGenerica<>();
+        lista.agregar(caballo1);
+        lista.agregar(caballo2);
+        lista.agregar(caballo3);
+        lista.agregar(caballo4);
+        lista.agregar(caballo5);
+        lista.agregar(caballo6);
+        lista.agregar(caballo7);
+        lista.agregar(caballo8);
+        lista.agregar(caballo9);
+        lista.agregar(caballo10);
 
-        try{
+        try {
             File archivo = new File("caballos.txt");
-            ObjectOutputStream obj = new ObjectOutputStream(new FileOutputStream(archivo));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo));
 
-            obj.writeObject(lista);
+            out.writeObject(lista);
 
-            obj.close();
+            out.close();
+            System.out.println("Lista de caballos serializada correctamente.");
 
-        }catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }catch (IOException e){
-
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
@@ -73,7 +72,7 @@ public class Main {
 
             System.out.println(e.getMessage());
         }
-*/
+		*/
 
     }
 }

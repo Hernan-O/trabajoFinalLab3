@@ -2,6 +2,7 @@ package Apuestas;
 
 import Carreras.Carrera;
 import Entes.Caballo;
+import Entes.ListaGenerica;
 import Interfaces.Apostable;
 
 import java.io.*;
@@ -10,11 +11,11 @@ import java.util.Random;
 
 public abstract class Apuesta implements Apostable {
 
-    public static ArrayList<Caballo> listaOrden;
+    public static ListaGenerica<Caballo> listaOrden;
     private Saldo cuentaUser;
     private Carrera tipo;
 
-    public ArrayList<Caballo> getListaOrden() {
+    public ListaGenerica<Caballo> getListaOrden() {
         return listaOrden;
     }
 
@@ -23,29 +24,22 @@ public abstract class Apuesta implements Apostable {
         this.cuentaUser=saldo;
         this.listaOrden = archivoBuffer();
     }
-    public static ArrayList<Caballo> archivoBuffer()
-    {
-        ArrayList<Caballo> aux= new ArrayList<>();
-        try{
+    
+    
+	@SuppressWarnings("unchecked")
+	public static ListaGenerica<Caballo> archivoBuffer() {
+        ListaGenerica<Caballo> aux = new ListaGenerica<>();
+        try {
             File archivo = new File("caballos.txt");
-
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo));
+            aux = (ListaGenerica<Caballo>) in.readObject();
 
-            ArrayList<Caballo> lista = (ArrayList<Caballo>) in.readObject();
-
-            aux= lista;
             in.close();
-
-
-        }catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
-        }
-        catch(FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         return aux;
@@ -102,7 +96,7 @@ public abstract class Apuesta implements Apostable {
     }
     
     
-    public boolean existe(Caballo ente,ArrayList<Caballo> datos)
+    public boolean existe(Caballo ente,ListaGenerica<Caballo> datos)
     {
         for(Caballo c:datos)
         {
