@@ -31,7 +31,6 @@ public class ListaGenerica<T> implements Iterable<T>, Serializable{
     public T get(int indice)
     {
     	return elementos.get(indice);
-    	
     }
     
     public void eliminar(int indice)

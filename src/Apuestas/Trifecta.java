@@ -37,7 +37,7 @@ public class Trifecta extends Apuesta {
             double r = random.nextDouble() * sumaProbabilidades;
             double acumulado = 0.0;
             int selectedIndex = -1;
-            for (int j = 0; j < super.getListaOrden().size(); j++) {
+            for (int j = 0; j < super.getListaOrden().size()-1; j++) {
                 Caballo objeto = super.getListaOrden().get(j);
                 acumulado += objeto.getProbabilidad();
                 if (r <= acumulado) {
@@ -78,7 +78,6 @@ public class Trifecta extends Apuesta {
 
         while (continuar) {
             try {
-
                 int i = 0;
                 while (i != 3) {
                     System.out.println("Ingrese el puesto: " + (i + 1));
@@ -125,6 +124,7 @@ public class Trifecta extends Apuesta {
 
             } catch (InputMismatchException e) {
                 System.out.println("Solo numeros");
+                break;
             } catch (opcionInexistente e) {
                 System.out.println("Entre 1 y 10");
             } catch (SaldoInsuficiente e) {

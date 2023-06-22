@@ -31,11 +31,11 @@ public class Imperfecta extends Apuesta {
             sumaProbabilidades += objeto.getProbabilidad();
         }
 
-        for (int i = 0; i <= 3; i++) {
+        for (int i = 0; i <= 4; i++) {
             double r = random.nextDouble() * sumaProbabilidades;
             double acumulado = 0.0;
             int selectedIndex = -1;
-            for (int j = 0; j < super.getListaOrden().size(); j++) {
+            for (int j = 0; j < super.getListaOrden().size()-1; j++) {
                 Caballo objeto = super.getListaOrden().get(j);
                 acumulado += objeto.getProbabilidad();
                 if (r <= acumulado) {
@@ -112,6 +112,7 @@ public class Imperfecta extends Apuesta {
 
             } catch (InputMismatchException e) {
                 System.out.println("Solo numeros");
+                break;
             } catch (opcionInexistente e) {
                 System.out.println("Entre 1 y 10");
             } catch (SaldoInsuficiente e) {
