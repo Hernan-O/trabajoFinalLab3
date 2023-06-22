@@ -17,18 +17,37 @@ public class Main {
 
         // INSTANCIAS Y CREACION DEL ARCHIVO.
 /*
+        ListaGenerica<Jockey> listaJ = new ListaGenerica<Jockey>();
+        listaJ.agregar(new Jockey("Guillermo Gimenez", 78));
+        listaJ.agregar(new Jockey("Leo Messirve", 80));
+        listaJ.agregar(new Jockey("Sergio Busquets", 90));
+        listaJ.agregar(new Jockey("Juan Manuel Belgrano", 75));
+        listaJ.agregar(new Jockey("San Martin", 83));
+        listaJ.agregar(new Jockey("El maestro Yoda", 25.2F));
+        listaJ.agregar(new Jockey("Senador Palpatin(Con poder ilimitado)", 78.6F));
+        listaJ.agregar(new Jockey("Mario Santos", 92.4F));
+        listaJ.agregar(new Jockey("Luigi", 91.8F));
+        listaJ.agregar(new Jockey("Emilio Ravenna", 85.1F));
+        Escribir escribir = new Escribir();
+        try {
+            escribir.abrir("jockey");
+            escribir.escribir(listaJ);
+            escribir.cerrar();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String[] nombres = {"Trotrón", "Relámpago", "Viento Veloz", "Galope Brillante", "Centella", "Rayo Dorado", "Fuego Salvaje", "Mariposa Veloz", "Estrella Fulgurante", "Tormenta Cautivadora"};
 
-        Caballo caballo1 = new Caballo(nombres[0], 3, 0);
-        Caballo caballo2 = new Caballo(nombres[1], 4, 1);
-        Caballo caballo3 = new Caballo(nombres[2], 5, 2);
-        Caballo caballo4 = new Caballo(nombres[3], 3, 0);
-        Caballo caballo5 = new Caballo(nombres[4], 4, 1);
-        Caballo caballo6 = new Caballo(nombres[5], 5, 2);
-        Caballo caballo7 = new Caballo(nombres[6], 3, 0);
-        Caballo caballo8 = new Caballo(nombres[7], 4, 1);
-        Caballo caballo9 = new Caballo(nombres[8], 5, 2);
-        Caballo caballo10 = new Caballo(nombres[9], 3, 0);
+        Caballo caballo1 = new Caballo(nombres[0], 3, 0,listaJ.get(0));
+        Caballo caballo2 = new Caballo(nombres[1], 4, 1,listaJ.get(1));
+        Caballo caballo3 = new Caballo(nombres[2], 5, 2,listaJ.get(2));
+        Caballo caballo4 = new Caballo(nombres[3], 3, 0,listaJ.get(3));
+        Caballo caballo5 = new Caballo(nombres[4], 4, 1,listaJ.get(4));
+        Caballo caballo6 = new Caballo(nombres[5], 5, 2,listaJ.get(5));
+        Caballo caballo7 = new Caballo(nombres[6], 3, 0,listaJ.get(6));
+        Caballo caballo8 = new Caballo(nombres[7], 4, 1,listaJ.get(7));
+        Caballo caballo9 = new Caballo(nombres[8], 5, 2,listaJ.get(8));
+        Caballo caballo10 = new Caballo(nombres[9], 3, 0,listaJ.get(9));
 
 
         ListaGenerica<Caballo> lista = new ListaGenerica<Caballo>();
@@ -42,9 +61,6 @@ public class Main {
         lista.agregar(caballo8);
         lista.agregar(caballo9);
         lista.agregar(caballo10);
-
- 
-        Escribir escribir = new Escribir();
         
         try {
 			escribir.abrir("caballos");
@@ -63,29 +79,6 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        
-        
-        
-        ListaGenerica<Jockey> listaJ = new ListaGenerica<Jockey>();
-        listaJ.agregar(new Jockey("Guillermo Gimenez", 78));
-        listaJ.agregar(new Jockey("Leo Messirve", 80));
-        listaJ.agregar(new Jockey("Sergio Busquets", 90));
-        listaJ.agregar(new Jockey("Juan Manuel Belgrano", 75));
-        listaJ.agregar(new Jockey("San Martin", 83));
-        listaJ.agregar(new Jockey("El maestro Yoda", 25.2F));
-        listaJ.agregar(new Jockey("Senador Palpatin(Con poder ilimitado)", 78.6F));
-        listaJ.agregar(new Jockey("Mario Santos", 92.4F));
-        listaJ.agregar(new Jockey("Luigi", 91.8F));
-        listaJ.agregar(new Jockey("Emilio Ravenna", 85.1F));
-        
-        try {
-			escribir.abrir("jockey");
-			escribir.escribir(listaJ);
-	        escribir.cerrar();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        
 */
     }
 }

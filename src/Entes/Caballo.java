@@ -60,14 +60,14 @@ public class Caballo implements Serializable {
         this.piloto = piloto;
     }
 
-    public Caballo(String nombre, int edad, int opc)
+    public Caballo(String nombre, int edad, int opc,Jockey piloto)
     {
         Caballo.Raza[] opciones = Caballo.Raza.values();
         this.nRaza= opciones[opc].toString();
         this.nombre=nombre;
         this.edad=edad;
         this.probabilidad = new Random().nextFloat()*100+1;
-        
+        this.piloto = piloto;
     }
 
     public void setProbabilidad(float probabilidad) {
@@ -87,7 +87,7 @@ public class Caballo implements Serializable {
         return  "Nombre: "+ getNombre()+"\n" +
                 "Edad: "+ getEdad()+"\n"+
                 "Raza: "+ getnRaza()+"\n"+
-                "Probabilidad: "+ getProbabilidad()+
+                "Probabilidad: "+ getProbabilidad()+"\n"+
                 "Nombre del jockey: "+ getPiloto().getNombre();
     }
 
